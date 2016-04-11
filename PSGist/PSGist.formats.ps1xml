@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Configuration>
+	<!-- ################ VIEW DEFINITIONS ################ -->
+    <ViewDefinitions>
+       <View>
+            <Name>DefaultView</Name>
+            <ViewSelectedBy>
+                <TypeName>Gist</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <Label>Owner</Label>
+                                <ScriptBlock>
+                                    $_.Owner.Login
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Description</Label>
+                                <PropertyName>Description</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Id</Label>
+                                <PropertyName>Id</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>CreatedAt</Label>
+                                <PropertyName>CreatedAt</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>UpdatedAt</Label>
+                                <PropertyName>UpdatedAt</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Public</Label>
+                                <PropertyName>Public</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>
