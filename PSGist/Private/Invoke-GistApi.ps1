@@ -1,5 +1,4 @@
 Function Invoke-GistApi {
-    
     [CmdletBinding()]
     
     Param (
@@ -27,7 +26,11 @@ Function Invoke-GistApi {
     )
     
     if ([String]::IsNullOrEmpty($env:GIST_OAUTH_TOKEN)) {
-        Write-Error -Message 'An authorazation token is required to use this function, please run the New-GistOAuthToken function to create a new token, or Set-GistOAuthToken to set the value.' -ErrorAction Stop
+        try {
+            New-GistOAuthToken -ErrorAction Stop | Out-Null
+        } catch {
+            Write-Error $_.ToString() -ErrorAction Stop
+        }
     }
 
     $Headers.Add('Authorization', 'token {0}' -f $env:GIST_OAUTH_TOKEN)

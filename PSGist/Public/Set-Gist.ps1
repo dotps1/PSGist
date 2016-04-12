@@ -11,5 +11,6 @@ Function Set-Gist {
         Method = ''
     }
     
-    Invoke-GistApi @apiCall
+    Write-Warning -Message 'Function not implimented yet.'
+    #Invoke-GistApi @apiCall
 }

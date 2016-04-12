@@ -19,7 +19,9 @@ Function New-GistOAuthToken {
     Process {
         try {
             $body = @{
-                scopes = @('gist')
+                scopes = @(
+                    'gist'
+                )
                 note = $TokenDescription
             }
 
@@ -28,11 +30,7 @@ Function New-GistOAuthToken {
                 Method = 'POST'
                 Headers = @{
                     Authorization = 'Basic ' + [Convert]::ToBase64String(
-                        [Text.Encoding]::ASCII.GetBytes("$($Credential.UserName):$([System.Runtime.InteropServices.Marshal]::PtrToStringAuto(
-                            [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR(
-                                $Credential.Password
-                            )
-                        ))")
+                        [Text.Encoding]::ASCII.GetBytes("$($Credential.UserName):$($Credential.GetNetworkCredential().Password)")
                     )
                 }
                 ContentType = 'application/json'
