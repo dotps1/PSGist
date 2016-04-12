@@ -1,5 +1,4 @@
 Function New-Gist {
-
     [CmdletBinding(
         DefaultParameterSetName = '__AllParameterSets'
     )]
@@ -43,7 +42,11 @@ Function New-Gist {
             HelpMessage = 'Allows the Gist to be viewed by others.'
         )]
         [Switch] 
-        $Public
+        $Public,
+
+        [Parameter()]
+        [Switch]
+        $UriToClip
     )
 
     DynamicParam {
@@ -110,6 +113,12 @@ Function New-Gist {
         }
         
         # Create the Gist.
-        [Gist]::new((Invoke-GistApi @apiCall))
+        $gist = [Gist]::new((Invoke-GistApi @apiCall))
+
+        if ($UriToClip.IsPresent) {
+            #$gist | Select-Object -ExpandProperty HtmlUrl | Select-Object -e | Clip
+        }
+
+        Write-Output $gist
     }
 }
