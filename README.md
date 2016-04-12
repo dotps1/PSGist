@@ -65,13 +65,14 @@ Mode                LastWriteTime         Length Name
 
 If you are in the ISE and want to quickly create a new Gist:
 ```powershell
-# Create a new private gist from the currently active ISE Tab, names the file what ever the active tab text is.
-New-Gist -IseScriptPane
+# Create a new Gist from an existing file.
+New-Gist -Path .\HelloWorld.ps1 -Description 'Hello World Gist.'
 ```
 
 I like to create Gists and then share them on Slack, so this how I use the feature:
 ```powershell
-# Create a new Gist, mark it as public, and then copy the AbsoluteUri Value to your clipboard, so it can be pasted right into Slack.
+# Create a new Gist using the content from the current active ISE Script Tab
+# Mark it as public, and then copy the AbsoluteUri Value to your clipboard, so it can be pasted right into Slack.
 New-Gist -IseScriptPane -Public -UriToClip
 ```
 
