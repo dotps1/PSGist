@@ -33,7 +33,7 @@ In order to use this module, you will need to create a new GitHub API OAuth Toke
 New-GistOAuthToken -Credental <PSCredential> [-TokenDescription [String]]
 ```
 
-This will generate a new token with access only to Gists to be used by this module.  The default name is `'PSGist PowerShell Module (<ComputerName>)'`, however this can be changed with the `-TokenDescriptionParameter`.  
+This will generate a new token with access only to Gists to be used by this module.  The default name is `PSGist PowerShell Module (<ComputerName>)`, however this can be changed with the `-TokenDescription` Parameter.  
 It will also create a set a new environment variable with the value, `$env:GIST_OAUTH_TOKEN`.
 If you already have a token key you would like to use, you can use the `Set-GistOAuthToken` function to achieve this.
 (Chances are you will not have a token value, so most likely, this function will not be used.)
@@ -67,7 +67,7 @@ Mode                LastWriteTime         Length Name
 -a----        4/11/2016  12:32 PM           2080 Register-SophosWebIntelligenceService.ps1         
 ```
 
-If you are in the ISE and want to quickly create a new Gist:
+Example 3:
 ```powershell
 # Create a new Gist from an existing file.
 New-Gist -Path .\HelloWorld.ps1 -Description 'Hello World Gist.'
