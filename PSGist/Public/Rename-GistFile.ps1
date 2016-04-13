@@ -1,4 +1,4 @@
-Function Update-GistFile {
+Function Rename-GistFile {
     [CmdletBinding()]
     [OutputType(
         [Gist]
@@ -6,7 +6,8 @@ Function Update-GistFile {
     
     Param (
         [Parameter(
-            Mandatory = $true
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true
         )]
         [String]
         $Id,
@@ -25,10 +26,14 @@ Function Update-GistFile {
     )
 
     Process {
+        [HashTable]$body = @{
+            files = @{ $OldName = @{ filename = $NewName } }
+        }
+
         $apiCall = @{
-            #Body = ''
-            RestMethod = $restMethod
-            Method = $method
+            Body = ConvertTo-Json -InputObject $body
+            RestMethod = 'gists/{0}' -f $Id
+            Method = 'PATCH'
         }
             
         Invoke-GistApi @apiCall

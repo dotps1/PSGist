@@ -1,5 +1,4 @@
 Function Get-GistCommit {
-
     [CmdletBinding()]
     [OutputType(
         [GistHistory]
