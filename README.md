@@ -33,7 +33,7 @@ In order to use this module, you will need to create a new GitHub API OAuth Toke
 New-GistOAuthToken -Credental <PSCredential> [-TokenDescription [String]]
 ```
 
-This will generate a new token with access only to Gists to be used by this module.  The default name is 'PSGist PowerShell Module (<ComputerName>)', however this can be changed with the `-TokenDescriptionParameter`.  
+This will generate a new token with access only to Gists to be used by this module.  The default name is `'PSGist PowerShell Module (<ComputerName>)'`, however this can be changed with the `-TokenDescriptionParameter`.  
 It will also create a set a new environment variable with the value, `$env:GIST_OAUTH_TOKEN`.
 If you already have a token key you would like to use, you can use the `Set-GistOAuthToken` function to achieve this.
 (Chances are you will not have a token value, so most likely, this function will not be used.)
