@@ -1,4 +1,4 @@
-function Remove-Gist {
+function Remove-GistFile {
     [CmdletBinding(
         ConfirmImpact = 'High', 
         SupportsShouldProcess = $true
@@ -13,16 +13,30 @@ function Remove-Gist {
             ValueFromPipelineByPropertyName = $true
         )]
         [String[]] 
-        $Id
+        $Id,
+
+        [Parameter(
+            Mandatory = $true    
+        )]
+        [String[]]
+        $FileName
     )
     
     Process {
         foreach ($item in $Id) {
             if ($PSCmdlet.ShouldProcess($item)) {
+                [HashTable]$body = @{
+                    files = @{}
+                }
+
+                foreach ($file in $FileName) {
+                    $body.files.Add($file, $null)
+                }
+                
                 $apiCall = @{
-                    #Body = ''
+                    Body = ConvertTo-Json -InputObject $body
                     RestMethod = 'gists/{0}' -f $item
-                    Method = 'DELETE'
+                    Method = 'PATCH'
                 }
     
                 Invoke-GistApi @apiCall

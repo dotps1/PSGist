@@ -1,5 +1,4 @@
 Function Save-Gist {
-
     [CmdletBinding()]
     [OutputType()]
 

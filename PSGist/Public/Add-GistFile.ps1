@@ -8,6 +8,13 @@ Function New-Gist {
 
     Param (
         [Parameter(
+            Mandatory = $true, 
+            ValueFromPipelineByPropertyName = $true
+        )]
+        [String[]]
+        $Id,
+
+        [Parameter(
             HelpMessage = 'Path to file(s) where the content will be used for the Gist.', 
             Mandatory = $true, 
             ParameterSetName = 'Files', 
@@ -31,18 +38,6 @@ Function New-Gist {
         })]
         [String[]]
         $Path,
-
-        [Parameter(
-            HelpMessage = 'Description of the Gist.'
-        )]
-        [String]
-        $Description,
-
-        [Parameter(
-            HelpMessage = 'Allows the Gist to be viewed by others.'
-        )]
-        [Switch] 
-        $Public,
 
         [Parameter()]
         [Switch]
@@ -85,35 +80,35 @@ Function New-Gist {
     }
     
     Process {
-        [HashTable]$body = @{
-            description = $Description
-            public = $Public.IsPresent
-            files = @{}
-        }
-
-        if ($PSCmdlet.ParameterSetName -ne 'IseScriptPane') {
-            foreach ($item in $Path) {
-                $body.files.Add($(Split-Path -Path $item -Leaf), @{ content = ((Get-Content -Path $item -Raw).PSObject.BaseObject) })
+        foreach ($item in $Id) {
+            [HashTable]$body = @{
+                files = @{}
             }
-        } else {
-            if ([String]::IsNullOrEmpty($PSBoundParameters.GistFileName)) {
-                $PSBoundParameters.GistFileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
-            }
-            $body.files.Add($PSBoundParameters.GistFileName, @{ content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text })
-        }
 
-        $apiCall = @{
-            Body = ConvertTo-Json -InputObject $body
-            RestMethod = 'gists'
-            Method = 'POST'
-        }
+            if ($PSCmdlet.ParameterSetName -ne 'IseScriptPane') {
+                foreach ($file in $Path) {
+                    $body.files.Add($(Split-Path -Path $file -Leaf), @{ content = ((Get-Content -Path $file -Raw).PSObject.BaseObject) })
+                }
+            } else {
+                if ([String]::IsNullOrEmpty($PSBoundParameters.GistFileName)) {
+                    $PSBoundParameters.GistFileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
+                }
+                $body.files.Add($PSBoundParameters.GistFileName, @{ content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text })
+            }
+
+            $apiCall = @{
+                Body = ConvertTo-Json -InputObject $body
+                RestMethod = 'gists/{0}' -f $item
+                Method = 'PATCH'
+            }
         
-        $gist = [Gist]::new((Invoke-GistApi @apiCall))
+            $gist = [Gist]::new((Invoke-GistApi @apiCall))
 
-        if ($UriToClip.IsPresent) {
-            $gist | Select-Object -ExpandProperty AbsoluteUri | Clip
+            if ($UriToClip.IsPresent) {
+                $gist | Select-Object -ExpandProperty AbsoluteUri | Clip
+            }
+
+            Write-Output $gist
         }
-
-        Write-Output $gist
     }
 }

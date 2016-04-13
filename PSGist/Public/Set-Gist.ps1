@@ -1,16 +1,39 @@
 Function Set-Gist {
-
     [CmdletBinding()]
-
+    [OutputType()]
+    
     Param (
+        [Parameter(
+            Mandatory = $true, 
+            ValueFromPipelineByPropertyName = $true
+        )]
+        [String[]]
+        $Id,
+
+        [Parameter(
+            Mandatory = $true
+        )]
+        [Bool]
+        $Star
     )
-    
-    $apiCall = @{
-        Body = ''
-        RestMethod = ''
-        Method = ''
+
+    Process {
+        foreach ($item in $Id) {
+            $restMethod = 'gists/{0}/star' -f $item
+                
+            if ($Star -eq $true) {
+                $method = 'PUT'
+            } else {
+                $method = 'DELETE' 
+            }
+
+            $apiCall = @{
+                #Body = ''
+                RestMethod = $restMethod
+                Method = $method
+            }
+            
+            Invoke-GistApi @apiCall
+        }
     }
-    
-    Write-Warning -Message 'Function not implimented yet.'
-    #Invoke-GistApi @apiCall
 }
