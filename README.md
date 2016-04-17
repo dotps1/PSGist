@@ -5,25 +5,25 @@ This is a PowerShell module that uses the GitHub API to interact and manipulate 
 
 
 ```
-PS C:\> Get-Command -Module PSGist
+PS C:\> Get-Command -Module PSGist | Sort-Object Name
 
 CommandType     Name                                               Version    Source                                                                                                                                                
 -----------     ----                                               -------    ------                                                                                                                                                
-Alias           Fork-Gist                                          1.1.0      PSGist                                                                                                                                                
-Alias           Star-Gist                                          1.1.0      PSGist                                                                                                                                                
-Function        Add-GistFile                                       1.1.0      PSGist                                                                                                                                                
-Function        Copy-Gist                                          1.1.0      PSGist                                                                                                                                                
-Function        Get-Gist                                           1.1.0      PSGist                                                                                                                                                
-Function        Get-GistCommit                                     1.1.0      PSGist                                                                                                                                                
-Function        Get-GistFork                                       1.1.0      PSGist                                                                                                                                                
-Function        New-Gist                                           1.1.0      PSGist                                                                                                                                                
-Function        New-GistOAuthToken                                 1.1.0      PSGist                                                                                                                                                
-Function        Remove-Gist                                        1.1.0      PSGist                                                                                                                                                
-Function        Remove-GistFile                                    1.1.0      PSGist                                                                                                                                                
-Function        Rename-GistFile                                    1.1.0      PSGist                                                                                                                                                
-Function        Save-Gist                                          1.1.0      PSGist                                                                                                                                                
-Function        Set-Gist                                           1.1.0      PSGist                                                                                                                                                
-Function        Set-GistOAuthToken                                 1.1.0      PSGist     
+Function        Add-GistFile                                       1.2.0      PSGist                                                                                                                                                
+Function        Copy-Gist                                          1.2.0      PSGist                                                                                                                                                
+Alias           Fork-Gist                                          1.2.0      PSGist                                                                                                                                                
+Function        Get-Gist                                           1.2.0      PSGist                                                                                                                                                
+Function        Get-GistCommit                                     1.2.0      PSGist                                                                                                                                                
+Function        Get-GistFork                                       1.2.0      PSGist                                                                                                                                                
+Function        New-Gist                                           1.2.0      PSGist                                                                                                                                                
+Function        New-GistOAuthToken                                 1.2.0      PSGist                                                                                                                                                
+Function        Remove-Gist                                        1.2.0      PSGist                                                                                                                                                
+Function        Remove-GistFile                                    1.2.0      PSGist                                                                                                                                                
+Function        Rename-GistFile                                    1.2.0      PSGist                                                                                                                                                
+Function        Save-Gist                                          1.2.0      PSGist                                                                                                                                                
+Function        Set-Gist                                           1.2.0      PSGist                                                                                                                                                
+Function        Set-GistOAuthToken                                 1.2.0      PSGist                                                                                                                                                
+Function        Update-GistFile                                    1.2.0      PSGist   
 ```
 
 
@@ -41,6 +41,9 @@ If you already have a token key you would like to use, you can use the `Set-Gist
 
 Once you have authenticated, go ahead and start playing with Gist Objects!
 
+###Update###
+Most functions have been updated to include the -IseScriptPane Dynamic Parameter, this will allow you to create, add, and update file(s) in Gist objects using the content from the ISE.
+
 Example 1:
 ```
 PS C:\> Get-Gist | Select-Object -First 1
@@ -52,6 +55,7 @@ Id          : 62f8f608bdfec5d08552
 CreatedAt   : 3/16/2016 10:39:29 AM
 UpdatedAt   : 3/16/2016 10:40:08 AM
 Public      : True
+HtmlUrl     : https://gist.github.com/62f8f608bdfec5d08552
 ```
 
 Example 2:
@@ -73,11 +77,10 @@ Example 3:
 New-Gist -Path .\HelloWorld.ps1 -Description 'Hello World Gist.'
 ```
 
-I like to create Gists and then share them on Slack, so this how I use the feature:
+Example 4:
 ```powershell
-# Create a new Gist using the content from the current active ISE Script Tab
-# Mark it as public, and then copy the AbsoluteUri Value to your clipboard, so it can be pasted right into Slack.
-New-Gist -IseScriptPane -Public -UriToClip
+# Create a new Gist using the content from the current active ISE Script Tab.
+New-Gist -IseScriptPane -Public
 ```
 
 

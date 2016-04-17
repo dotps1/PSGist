@@ -27,7 +27,11 @@ Function Rename-GistFile {
 
     Process {
         [HashTable]$body = @{
-            files = @{ $OldName = @{ filename = $NewName } }
+            files = @{ 
+                $OldName = @{ 
+                    filename = $NewName 
+                } 
+            }
         }
 
         $apiCall = @{
@@ -36,6 +40,8 @@ Function Rename-GistFile {
             Method = 'PATCH'
         }
             
-        Invoke-GistApi @apiCall
+        [Gist]::new(
+            (Invoke-GistApi @apiCall)
+        )
     }
 }

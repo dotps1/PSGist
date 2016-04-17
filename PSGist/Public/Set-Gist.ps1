@@ -11,7 +11,13 @@ Function Set-Gist {
         $Id,
 
         [Parameter(
-            Mandatory = $true
+            ParameterSetName = 'Description'
+        )]
+        [String]
+        $Description,
+
+        [Parameter(
+            ParameterSetName = 'Star'
         )]
         [Bool]
         $Star
@@ -19,21 +25,39 @@ Function Set-Gist {
 
     Process {
         foreach ($item in $Id) {
-            $restMethod = 'gists/{0}/star' -f $item
-                
-            if ($Star -eq $true) {
-                $method = 'PUT'
-            } else {
-                $method = 'DELETE' 
-            }
+            switch ($PSCmdlet.ParameterSetName) {
+                'Description' {
+                    [HashTable]$body = @{
+                        description = $Description
+                    }
 
-            $apiCall = @{
-                #Body = ''
-                RestMethod = $restMethod
-                Method = $method
+                    $apiCall = @{
+                        Body = ConvertTo-Json -InputObject $body -Compress
+                        RestMethod = 'gists/{0}' -f $item
+                        Method = 'PATCH'
+                    }
+
+                    [Gist]::new(
+                        (Invoke-GistApi @apiCall)
+                    )
+                }
+
+                'Star' {
+                    if ($Star -eq $true) {
+                        $method = 'PUT'
+                    } else {
+                        $method = 'DELETE' 
+                    }
+
+                    $apiCall = @{
+                        #Body = ''
+                        RestMethod = 'gists/{0}/star' -f $item
+                        Method = $method
+                    }
+
+                    Invoke-GistApi @apiCall
+                }
             }
-            
-            Invoke-GistApi @apiCall
         }
     }
 }

@@ -17,6 +17,5 @@ foreach ($path in $paths) {
 #region Aliases
 
 New-Alias -Name 'Fork-Gist' -Value 'Copy-Gist'
-New-Alias -Name 'Star-Gist' -Value 'Set-Gist'
 
 #endregion Aliases

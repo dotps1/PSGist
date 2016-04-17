@@ -42,11 +42,7 @@ Function New-Gist {
             HelpMessage = 'Allows the Gist to be viewed by others.'
         )]
         [Switch] 
-        $Public,
-
-        [Parameter()]
-        [Switch]
-        $UriToClip
+        $Public
     )
 
     DynamicParam {
@@ -73,12 +69,12 @@ Function New-Gist {
             $gistFileNameCollection = New-Object -TypeName System.Collections.ObjectModel.Collection[System.Attribute]
             $gistFileNameCollection.Add($gistFileNameAttributes)
             # Build Runtime Parameter with Collection Parameter Attributes.
-            $gistFileNameParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter -ArgumentList ('GistFileName', [String], $gistFileNameCollection)
+            $gistFileNameParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter -ArgumentList ('FileName', [String], $gistFileNameCollection)
             
             # Build Runtime Dictionary and add Runtime Parameters to it.
             $dictionary = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameterDictionary
             $dictionary.Add('IseScriptPane', $iseScriptPaneParameter)
-            $dictionary.Add('GistFileName', $gistFileNameParameter)
+            $dictionary.Add('FileName', $gistFileNameParameter)
             # Return dictionary of Runtime Paramters to the PSCmdlet.
             return $dictionary
         }
@@ -93,13 +89,22 @@ Function New-Gist {
 
         if ($PSCmdlet.ParameterSetName -ne 'IseScriptPane') {
             foreach ($item in $Path) {
-                $body.files.Add($(Split-Path -Path $item -Leaf), @{ content = ((Get-Content -Path $item -Raw).PSObject.BaseObject) })
+                $body.files.Add(
+                    $(Split-Path -Path $item -Leaf), @{ 
+                        content = ((Get-Content -Path $item -Raw).PSObject.BaseObject) 
+                    }
+                )
             }
         } else {
             if ([String]::IsNullOrEmpty($PSBoundParameters.GistFileName)) {
                 $PSBoundParameters.GistFileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
             }
-            $body.files.Add($PSBoundParameters.GistFileName, @{ content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text })
+            
+            $body.files.Add(
+                $PSBoundParameters.GistFileName, @{ 
+                    content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text 
+                }
+            )
         }
 
         $apiCall = @{
@@ -108,12 +113,8 @@ Function New-Gist {
             Method = 'POST'
         }
         
-        $gist = [Gist]::new((Invoke-GistApi @apiCall))
-
-        if ($UriToClip.IsPresent) {
-            $gist | Select-Object -ExpandProperty AbsoluteUri | Clip
-        }
-
-        Write-Output $gist
+        [Gist]::new(
+            (Invoke-GistApi @apiCall)
+        )
     }
 }

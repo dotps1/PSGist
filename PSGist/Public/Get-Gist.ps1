@@ -44,8 +44,9 @@ Function Get-Gist {
                 if ($Target -eq 'Public') { 
                     $restMethod = 'gists/public'
                 } else { 
-                    $restMethod = 'gists/starred' } 
-                }
+                    $restMethod = 'gists/starred' 
+                } 
+            }
 
             default { 
                 $restMethod = 'gists'
@@ -59,7 +60,9 @@ Function Get-Gist {
         }
     
         foreach ($result in (Invoke-GistApi @apiCall)) {
-            [Gist]::new($result)
+            [Gist]::new(
+                $result
+            )
         }
     }
 }

@@ -21,7 +21,9 @@
                 Method = 'POST'
             }
     
-            [Gist]::new((Invoke-GistApi @apiCall))
+            [Gist]::new(
+                (Invoke-GistApi @apiCall)
+            )
         }
     }
 }

@@ -23,7 +23,9 @@ Function Get-GistFork {
             }
     
             foreach ($result in (Invoke-GistApi @apiCall)) {
-                [GistFork]::new($result)
+                [GistFork]::new(
+                    $result
+                )
             }
         }
     }

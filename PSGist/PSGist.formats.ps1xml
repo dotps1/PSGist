@@ -37,6 +37,50 @@
                                 <Label>Public</Label>
                                 <PropertyName>Public</PropertyName>
                             </ListItem>
+                            <ListItem>
+                                <Label>HtmlUrl</Label>
+                                <PropertyName>HtmlUrl</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
+        <View>
+            <Name>DefaultView</Name>
+            <ViewSelectedBy>
+                <TypeName>GistHistory</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <Label>User</Label>
+                                <ScriptBlock>
+                                    $_.User.Login
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Version</Label>
+                                <PropertyName>Version</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>CommittedAt</Label>
+                                <PropertyName>CommittedAt</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Additions</Label>
+                                <ScriptBlock>
+                                    $_.ChangeStatus.Additions
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Deletions</Label>
+                                <ScriptBlock>
+                                    $_.ChangeStatus.Deletions
+                                </ScriptBlock>
+                            </ListItem>
                         </ListItems>
                     </ListEntry>
                 </ListEntries>

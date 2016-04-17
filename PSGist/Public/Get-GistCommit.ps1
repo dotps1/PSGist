@@ -22,7 +22,9 @@ Function Get-GistCommit {
             }
             
             foreach ($result in (Invoke-GistApi @apiCall)) {
-                [GistHistory]::new($result)
+                [GistHistory]::new(
+                    $result
+                )
             }
         }
     }

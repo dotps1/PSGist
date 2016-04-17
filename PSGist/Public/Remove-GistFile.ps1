@@ -39,7 +39,7 @@ function Remove-GistFile {
                     Method = 'PATCH'
                 }
     
-                Invoke-GistApi @apiCall
+                Invoke-GistApi @apiCall | Out-Null
             }
         }
     }
