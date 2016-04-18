@@ -40,12 +40,15 @@ Function Get-Gist {
                 $restMethod = 'gists/{0}' -f $Id
             }
 
-            'Target' { 
-                if ($Target -eq 'Public') { 
-                    $restMethod = 'gists/public'
-                } else { 
-                    $restMethod = 'gists/starred' 
-                } 
+            'Target' {
+                switch ($Target) {
+                    'Public' { 
+                        $restMethod = 'gists/public'
+                    }
+                    'Starred' { 
+                        $restMethod = 'gists/starred' 
+                    }
+                }
             }
 
             default { 

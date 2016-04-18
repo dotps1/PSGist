@@ -1,7 +1,5 @@
 Function Update-GistFile {
-    [CmdletBinding(
-        DefaultParameterSetName = '__AllParameterSets'
-    )]
+    [CmdletBinding()]
     [OutputType(
         [Gist]
     )]
@@ -17,7 +15,6 @@ Function Update-GistFile {
         [Parameter(
             HelpMessage = 'Path to file where the content will be used to update the Gist file.', 
             Mandatory = $true, 
-            ParameterSetName = 'File', 
             ValueFromPipeline = $true
         )]
         [ValidateScript({ 
