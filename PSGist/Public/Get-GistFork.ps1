@@ -1,5 +1,4 @@
 Function Get-GistFork {
-
     [CmdletBinding()]
     [OutputType(
         [GistFork]

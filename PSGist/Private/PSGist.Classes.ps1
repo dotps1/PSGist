@@ -106,7 +106,8 @@ Class GistChangeStatus {
 Class GistHistory {
     [GistChangeStatus]$ChangeStatus
     [DateTime]$CommittedAt
-    [String]$Url
+    Hidden [String]$Id
+    [Uri]$Url
     [GistUser]$User
     [String]$Version
 
@@ -114,6 +115,7 @@ Class GistHistory {
     GistHistory([Object]$object) {
         $this.ChangeStatus = $object.change_status
         $this.CommittedAt = $object.committed_at
+        $this.Id = ([Uri]$object.url).Segments[2].TrimEnd('/')
         $this.Url = $object.url
         $this.User = $object.user
         $this.Version = $object.version

@@ -33,8 +33,7 @@
 						<maml:para>The Id of the Gist Object to add a file to.</maml:para>
 					</maml:description>
 					<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="">
 					<maml:name>Path</maml:name>
@@ -42,13 +41,12 @@
 						<maml:para>The path to the file to add to the Gist Object.</maml:para>
 					</maml:description>
 					<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 			<command:syntaxItem>
 				<maml:name>Add-GistFile</maml:name>
-				<command:parameter required="false" pipelineinput="false" globbing="false" position="named">
+				<command:parameter required="false" pipelineinput="false" globbing="false" position="named" aliases="">
 					<!--Dynamic-->
 					<maml:name>IseScriptPane</maml:name>
 					<maml:description>
@@ -63,8 +61,7 @@
 						<maml:para>Only avaialbe from within the PowerShell_ISE, when using the IseScriptPane for content, this allows the filename to be set.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false">String</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 		</command:syntax>
@@ -80,8 +77,7 @@
 					<maml:name>String</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByValue)" position="1" aliases="">
 				<maml:name>Path</maml:name>
@@ -93,8 +89,7 @@
 					<maml:name>String[]</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="false" globbing="false" pipelineInput="false" position="named" aliases="">
 				<!--Dynamic-->
@@ -103,8 +98,7 @@
 					<maml:para>Only avaialbe from within the PowerShell_ISE, instructs the function to use the content from the current PowerShell_ISE Tab.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false">Switch</command:parameterValue>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="false" globbing="false" pipelineInput="false" position="named" aliases="">
 				<!--Dynamic-->
@@ -113,8 +107,7 @@
 					<maml:para>Only avaialbe from within the PowerShell_ISE, when using the IseScriptPane for content, this allows the filename to be set.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false">String</command:parameterValue>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 		</command:parameters>
 		<command:inputTypes>
@@ -238,8 +231,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 						<maml:para>The Id of the Gist Object to copy (fork).</maml:para>
 					</maml:description>
 					<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 		</command:syntax>
@@ -255,8 +247,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 					<maml:name>String[]</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 		</command:parameters>
 		<command:inputTypes>
@@ -264,16 +255,10 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 			<command:inputType>
 				<dev:type>
 					<maml:name>System.String[]</maml:name>
-					<maml:uri/>
+					<maml:uri>https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx</maml:uri>
 				</dev:type>
 				<maml:description>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
+					<maml:para>Represents text as a sequence of UTF-16 code units.</maml:para>
 				</maml:description>
 			</command:inputType>
 		</command:inputTypes>
@@ -360,8 +345,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 						<maml:para>Returns the Gist Objects of a specified user.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 			<command:syntaxItem>
@@ -372,8 +356,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 						<maml:para>Returns a specific Gist Object.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 			<command:syntaxItem>
@@ -384,8 +367,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 						<maml:para>Returns either Starred or Public Gist Objects.</maml:para>
 					</maml:description>
 					<command:parameterValue required="false" variableLength="false">String</command:parameterValue>
-					<dev:defaultValue>
-					</dev:defaultValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 		</command:syntax>
@@ -401,8 +383,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 					<maml:name>String</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
 				<maml:name>Id</maml:name>
@@ -414,8 +395,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 					<maml:name>String</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
 				<maml:name>Target</maml:name>
@@ -427,8 +407,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 					<maml:name>String</maml:name>
 					<maml:uri/>
 				</dev:type>
-				<dev:defaultValue>
-				</dev:defaultValue>
+				<dev:defaultValue/>
 			</command:parameter>
 		</command:parameters>
 		<command:inputTypes>
@@ -526,7 +505,7 @@ HtmlUrl     : https://gist.github.com/a5b60bdf7955e029a500</dev:code>
 		<command:details>
 			<command:name>Get-GistCommit</command:name>
 			<maml:description>
-				<maml:para/>
+				<maml:para>Get GistCommit Objects of a Gist Object.</maml:para>
 			</maml:description>
 			<maml:copyright>
 				<maml:para/>
@@ -536,27 +515,28 @@ HtmlUrl     : https://gist.github.com/a5b60bdf7955e029a500</dev:code>
 			<dev:version/>
 		</command:details>
 		<maml:description>
-			<maml:para/>
+			<maml:para>Get-GistCommit Objects of a Gist Object using the currently authenticated user context.</maml:para>
 		</maml:description>
 		<command:syntax>
 			<!-- Parameter Sets-->
 			<command:syntaxItem>
 				<maml:name>Get-GistCommit</maml:name>
-				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="0">
+				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="">
 					<maml:name>Id</maml:name>
 					<maml:description>
-						<maml:para/>
+						<maml:para>The Id of the Gist Object to get commits from.</maml:para>
 					</maml:description>
 					<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+					<dev:defaultValue/>
 				</command:parameter>
 			</command:syntaxItem>
 		</command:syntax>
 		<command:parameters>
 			<!-- All Parameters-->
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="0">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="">
 				<maml:name>Id</maml:name>
 				<maml:description>
-					<maml:para/>
+					<maml:para>The Id of the Gist Object to get commits from.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
 				<dev:type>
@@ -571,16 +551,10 @@ HtmlUrl     : https://gist.github.com/a5b60bdf7955e029a500</dev:code>
 			<command:inputType>
 				<dev:type>
 					<maml:name>System.String[]</maml:name>
-					<maml:uri/>
+					<maml:uri>https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx</maml:uri>
 				</dev:type>
 				<maml:description>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
+					<maml:para>Represents text as a sequence of UTF-16 code units.</maml:para>
 				</maml:description>
 			</command:inputType>
 		</command:inputTypes>
@@ -589,19 +563,44 @@ HtmlUrl     : https://gist.github.com/a5b60bdf7955e029a500</dev:code>
 			<command:returnValue>
 				<dev:type>
 					<maml:name>GistHistory</maml:name>
-					<maml:uri/>
+					<maml:uri>https://developer.github.com/v3/gists/</maml:uri>
 				</dev:type>
 				<maml:description>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
-					<maml:para/>
+					<maml:para>A .net representation for the JSON Object returned from the GitHub API.</maml:para>
 				</maml:description>
 			</command:returnValue>
 		</command:returnValues>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-GistCommit -id fbaba8119507ce58739ca356349cedb1
+
+
+User        : dotps1
+Version     : 7027070018888418de9d05e867ed4fea249c974d
+CommittedAt : 4/18/2016 3:12:16 PM
+Additions   : 21
+Deletions   : 0</dev:code>
+				<dev:remarks>
+					<maml:para>Gets the list of Commits made to a Gist Object.</maml:para>
+				</dev:remarks>
+			</command:example>
+		</command:examples>
+		<maml:relatedLinks>
+			<!-- Links-->
+			<maml:navigationLink>
+				<maml:linkText>List Gist Commits</maml:linkText>
+				<maml:uri>https://developer.github.com/v3/gists/#list-gist-commits</maml:uri>
+			</maml:navigationLink>
+			<maml:navigationLink>
+				<maml:linkText>Project Home</maml:linkText>
+				<maml:uri>http://dotps1.github.io/PSGist</maml:uri>
+			</maml:navigationLink>
+		</maml:relatedLinks>
 	</command:command>
 	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 		<!-- Command-->
@@ -821,6 +820,106 @@ HtmlUrl     : https://gist.github.com/a5b60bdf7955e029a500</dev:code>
 				</maml:description>
 			</command:returnValue>
 		</command:returnValues>
+	</command:command>
+	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+		<!-- Command-->
+		<command:details>
+			<command:name>Get-GistVersion</command:name>
+			<maml:description>
+				<maml:para>Get a Version of a Gist Object.</maml:para>
+			</maml:description>
+			<maml:copyright>
+				<maml:para>
+				</maml:para>
+			</maml:copyright>
+			<command:verb>Get</command:verb>
+			<command:noun>GistVersion</command:noun>
+			<dev:version/>
+		</command:details>
+		<maml:description>
+			<maml:para>Get a Version of a Gist Object using the currently authenticated user context.</maml:para>
+		</maml:description>
+		<command:syntax>
+			<!-- Parameter Sets-->
+			<command:syntaxItem>
+				<maml:name>Get-GistVersion</maml:name>
+			</command:syntaxItem>
+		</command:syntax>
+		<command:parameters>
+			<!-- All Parameters-->
+			<command:parameter required="true" globbing="false" pipelineInput="false" position="named" aliases="">
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+				<command:parameterValue required="true">String</command:parameterValue>
+				<dev:defaultValue>
+				</dev:defaultValue>
+			</command:parameter>
+			<command:parameter required="true" globbing="false" pipelineInput="false" position="named" aliases="">
+				<maml:name>Version</maml:name>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+				<command:parameterValue required="true">String</command:parameterValue>
+				<dev:defaultValue>
+				</dev:defaultValue>
+			</command:parameter>
+		</command:parameters>
+		<command:inputTypes>
+			<!-- Inputs-->
+			<command:inputType>
+				<dev:type>
+					<maml:name>System.String</maml:name>
+					<maml:uri>
+					</maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+			</command:inputType>
+		</command:inputTypes>
+		<command:returnValues>
+			<!-- Outputs-->
+			<command:returnValue>
+				<dev:type>
+					<maml:name>Gist</maml:name>
+					<maml:uri>
+					</maml:uri>
+				</dev:type>
+				<maml:description>
+					<maml:para>
+					</maml:para>
+				</maml:description>
+			</command:returnValue>
+		</command:returnValues>
+		<command:examples>
+			<!-- Examples-->
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-GistVersion -Id -Version</dev:code>
+				<dev:remarks>
+					<maml:para>
+					</maml:para>
+				</dev:remarks>
+			</command:example>
+			<command:example>
+				<maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+				<maml:introduction>
+					<maml:para>PS C:\&gt;</maml:para>
+				</maml:introduction>
+				<dev:code>Get-Gist | Select-Object -First 1 | Get-GistCommit | Select-Object -Last 1 | Get-GistVersion</dev:code>
+				<dev:remarks>
+					<maml:para>Gets the first commit of a Gist Object.</maml:para>
+				</dev:remarks>
+			</command:example>
+		</command:examples>
 	</command:command>
 	<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
 		<!-- Command-->
