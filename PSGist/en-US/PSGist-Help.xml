@@ -2232,6 +2232,7 @@ HtmlUrl     : https://gist.github.com/fbaba8119507ce58739ca356349cedb1</dev:code
 			</maml:navigationLink>
 			<maml:navigationLink>
 				<maml:linkText>Project Home</maml:linkText>
+				<maml:uri>http://dotps1.github.io/PSGist</maml:uri>
 			</maml:navigationLink>
 		</maml:relatedLinks>
 	</command:command>

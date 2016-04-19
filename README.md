@@ -88,6 +88,8 @@ Example 5:
 ```powershell
 # Get the first revision of a Gist.
 Get-Gist | Select -First 1 | Get-GistCommit | Select -Last 1 | Get-GistVersion
+```
+
 ---
 
 This project is derived from my work with [Trevor Sullivan](https://github.com/pcgeek86) and [PSGitHub](https://github.com/pcgeek86/PSGitHub).  But the more I worked on it, I felt it should be its own module.  Maybe nested in PSGitHub when that is completed...
