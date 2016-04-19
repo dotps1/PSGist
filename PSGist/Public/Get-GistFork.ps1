@@ -17,14 +17,14 @@ Function Get-GistFork {
         foreach ($item in $Id) {
             $apiCall = @{
                 #Body = ''
-                RestMethod = 'gists/{0}/forks' -f $item
+                RestMethod = 'gists/{0}' -f $item
                 Method = 'GET'
             }
     
             foreach ($result in (Invoke-GistApi @apiCall)) {
-                [GistFork]::new(
+                [Gist]::new(
                     $result
-                )
+                ).Forks
             }
         }
     }

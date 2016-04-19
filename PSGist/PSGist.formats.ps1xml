@@ -86,5 +86,41 @@
                 </ListEntries>
             </ListControl>
         </View>
+        <View>
+            <Name>DefaultView</Name>
+            <ViewSelectedBy>
+                <TypeName>GistFork</TypeName>
+            </ViewSelectedBy>
+            <ListControl>
+                <ListEntries>
+                    <ListEntry>
+                        <ListItems>
+                            <ListItem>
+                                <Label>User</Label>
+                                <ScriptBlock>
+                                    $_.User.Login
+                                </ScriptBlock>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Id</Label>
+                                <PropertyName>Id</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>CreatedAt</Label>
+                                <PropertyName>CreatedAt</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>UpdatedAt</Label>
+                                <PropertyName>UpdatedAt</PropertyName>
+                            </ListItem>
+                            <ListItem>
+                                <Label>Url</Label>
+                                <PropertyName>Url</PropertyName>
+                            </ListItem>
+                        </ListItems>
+                    </ListEntry>
+                </ListEntries>
+            </ListControl>
+        </View>
     </ViewDefinitions>
 </Configuration>
