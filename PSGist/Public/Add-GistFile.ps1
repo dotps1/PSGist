@@ -86,12 +86,12 @@ Function Add-GistFile {
                 )
             }
         } else {
-            if ([String]::IsNullOrEmpty($PSBoundParameters.GistFileName)) {
-                $PSBoundParameters.GistFileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
+            if ([String]::IsNullOrEmpty($PSBoundParameters.FileName)) {
+                $PSBoundParameters.FileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
             }
 
             $body.files.Add(
-                $PSBoundParameters.GistFileName, @{ 
+                $PSBoundParameters.FileName, @{ 
                     content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text 
                 }
             )

@@ -1,6 +1,8 @@
 Function Save-Gist {
     [CmdletBinding()]
-    [OutputType()]
+    [OutputType(
+        [System.IO.FileInfo]
+    )]
 
     Param (
         [Parameter()]

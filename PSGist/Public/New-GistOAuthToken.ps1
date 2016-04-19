@@ -1,5 +1,8 @@
 Function New-GistOAuthToken {
     [CmdletBinding()]
+    [OutputType(
+        [System.String]
+    )]
 
     Param (
         [Parameter(

@@ -13,8 +13,9 @@ Function Update-GistFile {
         $Id,
 
         [Parameter(
-            HelpMessage = 'Path to file where the content will be used to update the Gist file.', 
-            Mandatory = $true, 
+            HelpMessage = 'Path to file where the content will be used to update the Gist file.',
+            Mandatory = $true,
+            ParameterSetName = 'Files',
             ValueFromPipeline = $true
         )]
         [ValidateScript({ 
@@ -32,11 +33,7 @@ Function Update-GistFile {
             }
         })]
         [String]
-        $Path,
-
-        [Parameter()]
-        [String]
-        $FileName
+        $Path
     )
 
     DynamicParam {
@@ -53,10 +50,22 @@ Function Update-GistFile {
             $iseScriptPaneCollection.Add($iseScriptPaneAttributes)
             # Build Runtime Parameter with Collection Parameter Attributes.
             $iseScriptPaneParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter  -ArgumentList ('IseScriptPane', [Switch], $iseScriptPaneCollection)
+
+            # Build Attributes for GistFileName Parameter.
+            $gistFileNameAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
+                HelpMessage = 'The name of the Gist file.'
+                ParameterSetName = 'IseScriptPane'
+            }
+            # Build Collection Object to hold Parameter Attributes. 
+            $gistFileNameCollection = New-Object -TypeName System.Collections.ObjectModel.Collection[System.Attribute]
+            $gistFileNameCollection.Add($gistFileNameAttributes)
+            # Build Runtime Parameter with Collection Parameter Attributes.
+            $gistFileNameParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter -ArgumentList ('FileName', [String], $gistFileNameCollection)
             
-            # Build Runtime Dictionary and add Runtime Parameter to it.
+            # Build Runtime Dictionary and add Runtime Parameters to it.
             $dictionary = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameterDictionary
             $dictionary.Add('IseScriptPane', $iseScriptPaneParameter)
+            $dictionary.Add('FileName', $gistFileNameParameter)
             # Return dictionary of Runtime Paramters to the PSCmdlet.
             return $dictionary
         }
@@ -69,13 +78,17 @@ Function Update-GistFile {
 
         if ($PSCmdlet.ParameterSetName -ne 'IseScriptPane') {
             $body.files.Add(
-                $FileName, @{ 
-                    content = ((Get-Content -Path $Path -Raw).PSObject.BaseObject) 
+                $(Split-Path -Path $file -Leaf), @{ 
+                    content = ((Get-Content -Path $file -Raw).PSObject.BaseObject) 
                 }
             )
         } else {
+            if ([String]::IsNullOrEmpty($PSBoundParameters.FileName)) {
+                $PSBoundParameters.FileName = $psISE.CurrentPowerShellTab.Files.SelectedFile.DisplayName.TrimEnd('*')
+            }
+
             $body.files.Add(
-                $FileName, @{ 
+                $PSBoundParameters.FileName, @{ 
                     content = $psISE.CurrentPowerShellTab.Files.SelectedFile.Editor.Text 
                 }
             )

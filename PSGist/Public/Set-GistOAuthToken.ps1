@@ -1,9 +1,11 @@
 Function Set-GistOAuthToken {
     [CmdletBinding()]
+    [OutputType(
+        [System.String]
+    )]
 
     Param (
         [Parameter(
-            Mandatory = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -12,13 +14,17 @@ Function Set-GistOAuthToken {
     )
 
     Process {
-        try {
-            $env:GIST_OAUTH_TOKEN = $Token
-            [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $Token, 'User')
+        if ([String]::IsNullOrEmpty($Token)) {
+            try {
+                $env:GIST_OAUTH_TOKEN = $Token
+                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $Token, 'User')
 
-            Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
-        } catch {
-            Write-Error -Message $_.ToString() -ErrorAction Stop
+                Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
+            } catch {
+                Write-Error -Message $_.ToString() -ErrorAction Stop
+            }
+        } else {
+            New-GistOAuthToken
         }
     }
 }
