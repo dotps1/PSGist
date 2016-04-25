@@ -41,6 +41,12 @@
                                 <Label>HtmlUrl</Label>
                                 <PropertyName>HtmlUrl</PropertyName>
                             </ListItem>
+                            <ListItem>
+                                <Label>Files</Label>
+                                <ScriptBlock>
+                                    $_.Files.FileName
+                                </ScriptBlock>
+                            </ListItem>
                         </ListItems>
                     </ListEntry>
                 </ListEntries>
