@@ -1,5 +1,8 @@
 Function Set-GistOAuthToken {
-    [CmdletBinding()]
+    [CmdletBinding(
+        ConfirmImpact = 'Medium', 
+        SupportsShouldProcess = $true
+    )]
     [OutputType(
         [System.String]
     )]
@@ -15,13 +18,15 @@ Function Set-GistOAuthToken {
 
     Process {
         if ([String]::IsNullOrEmpty($Token)) {
-            try {
-                $env:GIST_OAUTH_TOKEN = $Token
-                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $Token, 'User')
+            if ($PSCmdlet.ShouldProcess($Token)) {
+                try {
+                    $env:GIST_OAUTH_TOKEN = $Token
+                    [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $Token, 'User')
 
-                Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
-            } catch {
-                Write-Error -Message $_.ToString() -ErrorAction Stop
+                    Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
+                } catch {
+                    Write-Error -Message $_.ToString() -ErrorAction Stop
+                }
             }
         } else {
             New-GistOAuthToken

@@ -13,8 +13,9 @@ Function Add-GistFile {
         $Id,
 
         [Parameter(
-            HelpMessage = 'Path to file(s) where the content will be used for the Gist.', 
+            HelpMessage = 'Path to file(s) where the content will be used for the Gist.',
             Mandatory = $true,
+            ParameterSetName = 'Path',
             ValueFromPipeline = $true
         )]
         [ValidateScript({ 
@@ -39,7 +40,7 @@ Function Add-GistFile {
 
     DynamicParam {
         # Only present this parameter set if running the PowerShell ISE.
-        if ($psISE -ne $null) {
+        if ($null -ne $psISE) {
             # Build Attributes for the IseScriptPane Parameter.
             $iseScriptPaneAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
                 HelpMessage = 'Captures the current active ISE Script Pane as Gist content.'

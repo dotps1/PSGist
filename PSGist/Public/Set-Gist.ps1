@@ -1,5 +1,8 @@
 Function Set-Gist {
-    [CmdletBinding()]
+    [CmdletBinding(
+        ConfirmImpact = 'Low', 
+        SupportsShouldProcess = $true
+    )]
     [OutputType()]
     
     Param (
@@ -25,37 +28,39 @@ Function Set-Gist {
 
     Process {
         foreach ($item in $Id) {
-            switch ($PSCmdlet.ParameterSetName) {
-                'Description' {
-                    [HashTable]$body = @{
-                        description = $Description
+            if ($PSCmdlet.ShouldProcess($item)) {
+                switch ($PSCmdlet.ParameterSetName) {
+                    'Description' {
+                        [HashTable]$body = @{
+                            description = $Description
+                        }
+
+                        $apiCall = @{
+                            Body = ConvertTo-Json -InputObject $body -Compress
+                            RestMethod = 'gists/{0}' -f $item
+                            Method = 'PATCH'
+                        }
+
+                        [Gist]::new(
+                            (Invoke-GistApi @apiCall)
+                        )
                     }
 
-                    $apiCall = @{
-                        Body = ConvertTo-Json -InputObject $body -Compress
-                        RestMethod = 'gists/{0}' -f $item
-                        Method = 'PATCH'
+                    'Star' {
+                        if ($Star -eq $true) {
+                            $method = 'PUT'
+                        } else {
+                            $method = 'DELETE' 
+                        }
+
+                        $apiCall = @{
+                            #Body = ''
+                            RestMethod = 'gists/{0}/star' -f $item
+                            Method = $method
+                        }
+
+                        Invoke-GistApi @apiCall
                     }
-
-                    [Gist]::new(
-                        (Invoke-GistApi @apiCall)
-                    )
-                }
-
-                'Star' {
-                    if ($Star -eq $true) {
-                        $method = 'PUT'
-                    } else {
-                        $method = 'DELETE' 
-                    }
-
-                    $apiCall = @{
-                        #Body = ''
-                        RestMethod = 'gists/{0}/star' -f $item
-                        Method = $method
-                    }
-
-                    Invoke-GistApi @apiCall
                 }
             }
         }

@@ -1,5 +1,8 @@
 Function New-GistOAuthToken {
-    [CmdletBinding()]
+    [CmdletBinding(
+        ConfirmImpact = 'Low', 
+        SupportsShouldProcess = $true
+    )]
     [OutputType(
         [System.String]
     )]
@@ -40,12 +43,14 @@ Function New-GistOAuthToken {
                 Body = (ConvertTo-Json $body -Compress)
             }
 
-            $response = Invoke-RestMethod @params -ErrorAction Stop
+            if ($PSCmdlet.ShouldProcess([String]::Empty, 'Create a new Gist OAuth Token?', $PSCmdlet.MyInvocation.InvocationName)) {
+                $response = Invoke-RestMethod @params -ErrorAction Stop
 
-            $env:GIST_OAUTH_TOKEN = $response.Token
-            [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $response.Token, 'User')
+                $env:GIST_OAUTH_TOKEN = $response.Token
+                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $response.Token, 'User')
 
-            Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
+                Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
+            }
         } catch {
             throw (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
         }

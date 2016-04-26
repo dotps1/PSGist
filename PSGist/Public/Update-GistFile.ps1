@@ -1,5 +1,8 @@
 Function Update-GistFile {
-    [CmdletBinding()]
+    [CmdletBinding(
+        ConfirmImpact = 'Medium', 
+        SupportsShouldProcess = $true
+    )]
     [OutputType(
         [Gist]
     )]
@@ -15,7 +18,7 @@ Function Update-GistFile {
         [Parameter(
             HelpMessage = 'Path to file where the content will be used to update the Gist file.',
             Mandatory = $true,
-            ParameterSetName = 'Files',
+            ParameterSetName = 'Path',
             ValueFromPipeline = $true
         )]
         [ValidateScript({ 
@@ -38,7 +41,7 @@ Function Update-GistFile {
 
     DynamicParam {
         # Only present this parameter set if running the PowerShell ISE.
-        if ($psISE -ne $null) {
+        if ($null -ne $psISE) {
             # Build Attributes for the IseScriptPane Parameter.
             $iseScriptPaneAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
                 HelpMessage = 'Captures the current active ISE Script Pane as Gist content.'
@@ -94,14 +97,16 @@ Function Update-GistFile {
             )
         }
 
-        $apiCall = @{
-            Body = ConvertTo-Json -InputObject $body -Compress
-            RestMethod = 'gists/{0}' -f $Id
-            Method = 'PATCH'
-        }
+        if ($PSCmdlet.ShouldProcess($Id)) {
+            $apiCall = @{
+                Body = ConvertTo-Json -InputObject $body -Compress
+                RestMethod = 'gists/{0}' -f $Id
+                Method = 'PATCH'
+            }
         
-        [Gist]::new(
-            (Invoke-GistApi @apiCall)
-        )
+            [Gist]::new(
+                (Invoke-GistApi @apiCall)
+            )
+        }
     }
 }

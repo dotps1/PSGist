@@ -1,6 +1,7 @@
 Function New-Gist {
     [CmdletBinding(
-        DefaultParameterSetName = '__AllParameterSets'
+        ConfirmImpact = 'Low', 
+        SupportsShouldProcess = $true
     )]
     [OutputType(
         [Gist]
@@ -10,7 +11,7 @@ Function New-Gist {
         [Parameter(
             HelpMessage = 'Path to file(s) where the content will be used for the Gist.', 
             Mandatory = $true, 
-            ParameterSetName = 'Files', 
+            ParameterSetName = 'Path', 
             ValueFromPipeline = $true
         )]
         [ValidateScript({ 
@@ -47,7 +48,7 @@ Function New-Gist {
 
     DynamicParam {
         # Only present this parameter set if running the PowerShell ISE.
-        if ($psISE -ne $null) {
+        if ($null -ne $psISE) {
             # Build Attributes for the IseScriptPane Parameter.
             $iseScriptPaneAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
                 HelpMessage = 'Captures the current active ISE Script Pane as Gist content.'
@@ -107,14 +108,16 @@ Function New-Gist {
             )
         }
 
-        $apiCall = @{
-            Body = ConvertTo-Json -InputObject $body
-            RestMethod = 'gists'
-            Method = 'POST'
-        }
+        if ($PSCmdlet.ShouldProcess([String]::Empty, 'Create a new Gist object?', $PSCmdlet.MyInvocation.InvocationName)) {
+            $apiCall = @{
+                Body = ConvertTo-Json -InputObject $body
+                RestMethod = 'gists'
+                Method = 'POST'
+            }
         
-        [Gist]::new(
-            (Invoke-GistApi @apiCall)
-        )
+            [Gist]::new(
+                (Invoke-GistApi @apiCall)
+            )
+        }
     }
 }

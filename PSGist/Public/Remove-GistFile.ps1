@@ -24,15 +24,15 @@ function Remove-GistFile {
     
     Process {
         foreach ($item in $Id) {
-            if ($PSCmdlet.ShouldProcess($item)) {
-                [HashTable]$body = @{
-                    files = @{}
-                }
+            [HashTable]$body = @{
+                files = @{}
+            }
 
-                foreach ($file in $FileName) {
-                    $body.files.Add($file, $null)
-                }
+            foreach ($file in $FileName) {
+                $body.files.Add($file, $null)
+            }
                 
+            if ($PSCmdlet.ShouldProcess($item)) {
                 $apiCall = @{
                     Body = ConvertTo-Json -InputObject $body
                     RestMethod = 'gists/{0}' -f $item
