@@ -1,6 +1,8 @@
 # PSGist
 ## A PowerShell module to interact with GitHub Gists.
 
+[![Build status](https://ci.appveyor.com/api/projects/status/8tldqe5wr9y3fcf8?svg=true)](https://ci.appveyor.com/project/dotps1/psgist)
+
 This is a PowerShell module that uses the GitHub API to interact and manipulate [Gist](https://developer.github.com).
 
 
