@@ -1,19 +1,22 @@
 Function Add-GistFile {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist'
+    )]
     [OutputType(
         [Gist]
     )]
 
     Param (
         [Parameter(
-            Mandatory = $true, 
+            HelpMessage = 'The Id of the Gist Object.',
+            Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
         [String]
         $Id,
 
         [Parameter(
-            HelpMessage = 'Path to file(s) where the content will be used for the Gist.',
+            HelpMessage = 'Path to file(s) where the content will be used for the GistFile.',
             Mandatory = $true,
             ParameterSetName = 'Path',
             ValueFromPipeline = $true
@@ -43,8 +46,7 @@ Function Add-GistFile {
         if ($null -ne $psISE) {
             # Build Attributes for the IseScriptPane Parameter.
             $iseScriptPaneAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
-                HelpMessage = 'Captures the current active ISE Script Pane as Gist content.'
-                Mandatory = $true
+                HelpMessage = 'Captures the current active ISE Script Pane for the GistFile content.'
                 ParameterSetName = 'IseScriptPane'
             }
             # Build Collection Object to hold Parameter Attributes.
@@ -55,7 +57,7 @@ Function Add-GistFile {
 
             # Build Attributes for GistFileName Parameter.
             $gistFileNameAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
-                HelpMessage = 'The name of the Gist file.'
+                HelpMessage = 'The name of the GistFile.'
                 ParameterSetName = 'IseScriptPane'
             }
             # Build Collection Object to hold Parameter Attributes. 

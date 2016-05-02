@@ -1,11 +1,14 @@
 Function Get-GistVersion {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist'
+    )]
     [OutputType(
         [Gist]
     )]
 
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -13,6 +16,7 @@ Function Get-GistVersion {
         $Id,
 
         [Parameter(
+            HelpMessageBaseName = 'The Version Id of the Gist Object.',
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]

@@ -1,6 +1,7 @@
 function Remove-Gist {
     [CmdletBinding(
-        ConfirmImpact = 'High', 
+        ConfirmImpact = 'High',
+        HelpUri = 'http://dotps1.github.io/PSGist',
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -9,6 +10,7 @@ function Remove-Gist {
 
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]

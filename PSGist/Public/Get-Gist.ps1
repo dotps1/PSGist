@@ -1,6 +1,7 @@
 Function Get-Gist {
     [CmdletBinding(
-        DefaultParameterSetName = '__AllParameterSets'
+        DefaultParameterSetName = '__AllParameterSets',
+        HelpUri = 'http://dotps1.github.io/PSGist'
     )]
     [OutputType(
         [Gist]
@@ -8,18 +9,21 @@ Function Get-Gist {
 
     Param (
         [Parameter(
+            HelpMessage = 'The login of the GitHub User.',
             ParameterSetName = 'Owner'
         )]
         [String]
         $Owner,
         
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             ParameterSetName = 'Id'
         )]
         [String]
         $Id,
 
         [Parameter(
+            HelpMessage = 'Target Type for Gist Objects.',
             ParameterSetName = 'Target'
         )]
         [ValidateSet(

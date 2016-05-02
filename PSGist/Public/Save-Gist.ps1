@@ -1,15 +1,20 @@
 Function Save-Gist {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist'
+    )]
     [OutputType(
-        [System.IO.FileInfo]
+        [IO.FileInfo]
     )]
 
     Param (
-        [Parameter()]
+        [Parameter(
+            HelpMessage = 'Path to save the Gist Object.'
+        )]
         [String]
         $Path = "$env:APPDATA\PSGist",
 
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]

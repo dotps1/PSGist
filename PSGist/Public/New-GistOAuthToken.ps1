@@ -1,14 +1,16 @@
 Function New-GistOAuthToken {
     [CmdletBinding(
-        ConfirmImpact = 'Low', 
+        ConfirmImpact = 'Low',
+        HelpUri = 'http://dotps1.github.io/PSGist',
         SupportsShouldProcess = $true
     )]
     [OutputType(
-        [System.String]
+        [String]
     )]
 
     Param (
         [Parameter(
+            HelpMessage = 'PSCredential object used to autheniticate to GitHub.',
             Mandatory = $true,
             ValueFromPipeline = $true
         )]
@@ -17,7 +19,9 @@ Function New-GistOAuthToken {
         [System.Management.Automation.Credential()]
         $Credential,
 
-        [Parameter()]
+        [Parameter(
+            HelpMessage = 'A Description for the generated Token.'
+        )]
         [String]
         $TokenDescription = "PSGist PowerShell Module ($env:ComputerName)"
     )

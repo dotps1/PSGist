@@ -1,11 +1,14 @@
 Function Rename-GistFile {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist'
+    )]
     [OutputType(
         [Gist]
     )]
     
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -13,12 +16,14 @@ Function Rename-GistFile {
         $Id,
 
         [Parameter(
+            HelpMessage = 'Current name of the GistFile.',
             Mandatory = $true
         )]
         [String]
         $OldName,
 
         [Parameter(
+            HelpMessage = 'New name of the GistFile.',
             Mandatory = $true
         )]
         [String]

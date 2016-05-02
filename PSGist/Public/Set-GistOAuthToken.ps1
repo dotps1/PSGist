@@ -1,6 +1,7 @@
 Function Set-GistOAuthToken {
     [CmdletBinding(
-        ConfirmImpact = 'Medium', 
+        ConfirmImpact = 'Medium',
+        HelpUri = 'http://dotps1.github.io/PSGist',
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -9,6 +10,7 @@ Function Set-GistOAuthToken {
 
     Param (
         [Parameter(
+            HelpMessage = 'Token value to assign the environment variable GIST_OAUTH_TOKEN.',
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]

@@ -1,11 +1,14 @@
 Function Get-GistCommit {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist'
+    )]
     [OutputType(
         [GistHistory]
     )]
 
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]

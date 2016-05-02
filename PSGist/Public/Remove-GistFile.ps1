@@ -1,6 +1,7 @@
 function Remove-GistFile {
     [CmdletBinding(
-        ConfirmImpact = 'High', 
+        ConfirmImpact = 'High',
+        HelpUri = 'http://dotps1.github.io/PSGist',
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -9,6 +10,7 @@ function Remove-GistFile {
 
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -16,6 +18,7 @@ function Remove-GistFile {
         $Id,
 
         [Parameter(
+            HelpMessage = 'The name of the GistFile.',
             Mandatory = $true    
         )]
         [String[]]

@@ -1,12 +1,14 @@
 Function Set-Gist {
     [CmdletBinding(
-        ConfirmImpact = 'Low', 
+        ConfirmImpact = 'Low',
+        HelpUri = 'http://dotps1.github.io/PSGist',
         SupportsShouldProcess = $true
     )]
     [OutputType()]
     
     Param (
         [Parameter(
+            HelpMessage = 'The Id of the Gist Object.',
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -14,12 +16,14 @@ Function Set-Gist {
         $Id,
 
         [Parameter(
+            HelpMessage = 'Description of the Gist Object.',
             ParameterSetName = 'Description'
         )]
         [String]
         $Description,
 
         [Parameter(
+            HelpMessage = 'The Starred state of a Gist Object.',
             ParameterSetName = 'Star'
         )]
         [Bool]
