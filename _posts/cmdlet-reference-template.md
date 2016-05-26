@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ""
-synopsis: ""
+title: 
+synopsis:
 ---
 
 ---
@@ -14,28 +14,33 @@ synopsis: ""
 
 #### **Syntax**
 
-```powershell
+##### **ParamSet**
+```
 
 ```
 
 ---
 
+#### **Aliases**
+
+---
+
 #### **Description**
-
-
 
 ---
 
 #### **Parameters**
 
-[WinSCPSession \<WinSCP.Session\>](http://winscp.net/eng/docs/library_session)
+[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
 
-A valid open WinSCP Session, returned from [New-WinSCPSession]({{ site.url }}/New-WinSCPSession.html).
+The unique Id of a Gist Object.
 
+* ParameterSets: All
+* Aliases: None
 * Required: True
-* Position: 0
+* Position: Named
 * Default Value:
-* Accept Pipeline Input: True (ByValue)
+* Accept Pipeline Input: True (ByPropertyNameValue)
 * Accept Wildcard Characters: False
 
 []()
@@ -56,26 +61,32 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 #### **Inputs**
 
-[WinSCP.Session](http://winscp.net/eng/docs/library_session)
+[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
-* Represents a session and provides methods for manipulating remote files over SFTP, SCP or FTP session.
+* Represents text as a sequence of UTF-16 code units.
+
+[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
+
+* Represents text as a sequence of UTF-16 code units.
 
 ---
 
 #### **Outputs**
 
+[PSGist.Gist](https://developer.github.com/v3/gists/)
 
+* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
 
 ---
 
 #### **Notes**
 
-If the WinSCPSession is piped into this command, the connection will be closed and the object will be disposed upon completion of the command.
+There must be an Authenticated User Context to intereact with Gist Objects.
 
 ---
 
 #### **Example 1**
 
-```powershell
+```
 
 ```

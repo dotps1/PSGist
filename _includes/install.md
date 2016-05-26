@@ -1,13 +1,13 @@
 ```powershell
 # Inspect
-Save-Module -Name WinSCP -Path <Path>
+Save-Module -Name PSGist -Path <Path>
 
 # Install
-Install-Module -Name WinSCP
+Install-Module -Name PSGist
 
 # Import
-Import-Module -Name WinSCP
+Import-Module -Name PSGist
 
 # Cmdlets
-Get-Command -Module WinSCP
+Get-Command -Module PSGist
 ```

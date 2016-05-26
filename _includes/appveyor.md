@@ -1,1 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/dgoq6w2xsfh52m6h?svg=true)](https://ci.appveyor.com/project/dotps1/winscp)
+[![Build status](https://ci.appveyor.com/api/projects/status/8tldqe5wr9y3fcf8?svg=true)](https://ci.appveyor.com/project/dotps1/psgist)
