@@ -1,5 +1,5 @@
 #http://www.appveyor.com/docs/appveyor-yml
-version: 1.4.1.0
+version: 1.4.1.1
 os: WMF 5
 skip_commits:
   message: /updated readme.*/

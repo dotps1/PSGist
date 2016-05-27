@@ -1,6 +1,8 @@
 Function Update-GistComment {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Update-GistComment.html'
+        ConfirmImpact = 'Medium',
+        HelpUri = 'http://dotps1.github.io/PSGist/Update-GistComment.html',
+        SupportsShouldProcess = $true
     )]
     [OutputType(
         [GistComment]
@@ -37,14 +39,16 @@ Function Update-GistComment {
             body = $Comment
         }
         
-        $apiCall = @{
-            Body = ConvertTo-Json -InputObject $body -Compress
-            RestMethod = 'gists/{0}/comments/{1}' -f $Id, $CommentId
-            Method = 'PATCH' 
+        if ($PSCmdlet.ShouldProcess($Id)) {
+            $apiCall = @{
+                Body = ConvertTo-Json -InputObject $body -Compress
+                RestMethod = 'gists/{0}/comments/{1}' -f $Id, $CommentId
+                Method = 'PATCH' 
+            }
+            
+            [GistComment]::new(
+                (Invoke-GistApi @apiCall), $Id   
+            )
         }
-        
-        [GistComment]::new(
-            (Invoke-GistApi @apiCall), $Id   
-        )
     }   
 }
