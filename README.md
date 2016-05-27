@@ -7,26 +7,30 @@ This is a PowerShell module that uses the GitHub API to interact and manipulate 
 
 
 ```
-PS GitHub:\> Get-Command -Module PSGist | Sort-object -Property Name
+PS GitHub:\> Get-Command -Module PSGist | Sort-Object -Property Name
 
-CommandType     Name                                               Version    Source                                                                                                                      
------------     ----                                               -------    ------                                                                                                                      
-Function        Add-GistFile                                       1.4.0.3    PSGist                                                                                                                      
-Function        Copy-Gist                                          1.4.0.3    PSGist                                                                                                                      
-Alias           Fork-Gist                                          1.4.0.3    PSGist                                                                                                                      
-Function        Get-Gist                                           1.4.0.3    PSGist                                                                                                                      
-Function        Get-GistCommit                                     1.4.0.3    PSGist                                                                                                                      
-Function        Get-GistFork                                       1.4.0.3    PSGist                                                                                                                      
-Function        Get-GistVersion                                    1.4.0.3    PSGist                                                                                                                      
-Function        New-Gist                                           1.4.0.3    PSGist                                                                                                                      
-Function        New-GistOAuthToken                                 1.4.0.3    PSGist                                                                                                                      
-Function        Remove-Gist                                        1.4.0.3    PSGist                                                                                                                      
-Function        Remove-GistFile                                    1.4.0.3    PSGist                                                                                                                      
-Function        Rename-GistFile                                    1.4.0.3    PSGist                                                                                                                      
-Function        Save-Gist                                          1.4.0.3    PSGist                                                                                                                      
-Function        Set-Gist                                           1.4.0.3    PSGist                                                                                                                      
-Function        Set-GistOAuthToken                                 1.4.0.3    PSGist                                                                                                                      
-Function        Update-GistFile                                    1.4.0.3    PSGist
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Add-GistComment                                    1.4.1.0    PSGist
+Function        Add-GistFile                                       1.4.1.0    PSGist
+Function        Copy-Gist                                          1.4.1.0    PSGist
+Alias           Fork-Gist                                          1.4.1.0    PSGist
+Function        Get-Gist                                           1.4.1.0    PSGist
+Function        Get-GistComment                                    1.4.1.0    PSGist
+Function        Get-GistCommit                                     1.4.1.0    PSGist
+Function        Get-GistFork                                       1.4.1.0    PSGist
+Function        Get-GistVersion                                    1.4.1.0    PSGist
+Function        New-Gist                                           1.4.1.0    PSGist
+Function        New-GistOAuthToken                                 1.4.1.0    PSGist
+Function        Remove-Gist                                        1.4.1.0    PSGist
+Function        Remove-GistComment                                 1.4.1.0    PSGist
+Function        Remove-GistFile                                    1.4.1.0    PSGist
+Function        Rename-GistFile                                    1.4.1.0    PSGist
+Function        Save-Gist                                          1.4.1.0    PSGist
+Function        Set-Gist                                           1.4.1.0    PSGist
+Function        Set-GistOAuthToken                                 1.4.1.0    PSGist
+Function        Update-GistComment                                 1.4.1.0    PSGist
+Function        Update-GistFile                                    1.4.1.0    PSGist
 ```
 
 
