@@ -1,6 +1,6 @@
 ﻿Function Copy-Gist {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Copy-Gist.html'
     )]
     [OutputType(
         [Gist]

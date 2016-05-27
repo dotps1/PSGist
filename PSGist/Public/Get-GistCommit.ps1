@@ -1,6 +1,6 @@
 Function Get-GistCommit {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistCommit.html'
     )]
     [OutputType(
         [GistHistory]

@@ -1,7 +1,7 @@
 Function Set-GistOAuthToken {
     [CmdletBinding(
         ConfirmImpact = 'Medium',
-        HelpUri = 'http://dotps1.github.io/PSGist',
+        HelpUri = 'http://dotps1.github.io/PSGist/Set-GistOAuthToken.html',
         SupportsShouldProcess = $true
     )]
     [OutputType(

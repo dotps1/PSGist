@@ -1,6 +1,6 @@
 Function Get-GistVersion {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistVersion.html'
     )]
     [OutputType(
         [Gist]

@@ -1,6 +1,6 @@
 Function Save-Gist {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Save-Gist.html'
     )]
     [OutputType(
         [IO.FileInfo]

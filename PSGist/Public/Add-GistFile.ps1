@@ -1,6 +1,6 @@
 Function Add-GistFile {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Add-GistFile.html'
     )]
     [OutputType(
         [Gist]

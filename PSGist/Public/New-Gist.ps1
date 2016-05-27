@@ -1,7 +1,7 @@
 Function New-Gist {
     [CmdletBinding(
         ConfirmImpact = 'Low',
-        HelpUri = 'http://dotps1.github.io/PSGist',
+        HelpUri = 'http://dotps1.github.io/PSGist/New-Gist.html',
         SupportsShouldProcess = $true
     )]
     [OutputType(

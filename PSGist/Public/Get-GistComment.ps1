@@ -1,5 +1,7 @@
 Function Get-GistComment {
-    [CmdletBinding()]
+    [CmdletBinding(
+        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistComment.html'
+    )]
     [OutputType([GistComment])]
     
     Param (

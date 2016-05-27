@@ -1,6 +1,6 @@
 Function Rename-GistFile {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Rename-GistFile.html'
     )]
     [OutputType(
         [Gist]

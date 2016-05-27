@@ -1,7 +1,7 @@
 Function Get-Gist {
     [CmdletBinding(
         DefaultParameterSetName = '__AllParameterSets',
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Get-Gist.html'
     )]
     [OutputType(
         [Gist]

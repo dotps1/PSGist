@@ -1,6 +1,6 @@
 Function Get-GistFork {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist'
+        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistFork.html'
     )]
     [OutputType(
         [GistFork]

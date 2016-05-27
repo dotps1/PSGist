@@ -1,7 +1,7 @@
 Function Update-GistFile {
     [CmdletBinding(
         ConfirmImpact = 'Medium', 
-        HelpUri = 'http://dotps1.github.io/PSGist',
+        HelpUri = 'http://dotps1.github.io/PSGist/Update-GistFile.html',
         SupportsShouldProcess = $true
     )]
     [OutputType(

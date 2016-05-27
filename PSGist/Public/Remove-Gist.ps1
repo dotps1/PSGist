@@ -1,7 +1,7 @@
 function Remove-Gist {
     [CmdletBinding(
         ConfirmImpact = 'High',
-        HelpUri = 'http://dotps1.github.io/PSGist',
+        HelpUri = 'http://dotps1.github.io/PSGist/Remove-Gist.html',
         SupportsShouldProcess = $true
     )]
     [OutputType(
