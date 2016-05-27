@@ -14,7 +14,6 @@ synopsis:
 
 #### **Syntax**
 
-##### **ParamSet**
 ```
 
 ```
@@ -22,6 +21,8 @@ synopsis:
 ---
 
 #### **Aliases**
+
+None
 
 ---
 
@@ -40,13 +41,15 @@ The unique Id of a Gist Object.
 * Required: True
 * Position: Named
 * Default Value:
-* Accept Pipeline Input: True (ByPropertyNameValue)
+* Accept Pipeline Input: True (ByPropertyName)
 * Accept Wildcard Characters: False
 
 []()
 
 
 
+* ParameterSets:
+* Aliases:
 * Required:
 * Position:
 * Default Value:

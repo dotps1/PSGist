@@ -30,7 +30,7 @@ Add-GistFile -Id <String> [-IseScriptPane] [-FileName <String>]
 
 #### **Aliases**
 
-None
+None.
 
 ---
 
@@ -51,7 +51,7 @@ The unique Id of a Gist Object.
 * Required: True
 * Position: Named
 * Default Value:
-* Accept Pipeline Input: True (ByPropertyNameValue)
+* Accept Pipeline Input: True (ByPropertyName)
 * Accept Wildcard Characters: False
 
 [Path \<String\[\]\>]()
@@ -112,13 +112,13 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 [PSGist.Gist](https://developer.github.com/v3/gists/)
 
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
+* A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 
 ---
 
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+There must be an Authenticated User Context to interact with Gist Objects.
 The IseScriptPane Parameter Set is only available from within the PowerShell_Ise Application.
 
 ---
