@@ -64,6 +64,26 @@ Class GistChangeStatus {
     }
 }
 
+Class GistComment {
+    [String]$Body
+    [String]$CommentId
+    [DateTime]$CreatedAt
+    [String]$Id
+    [DateTime]$UpdatedAt
+    [GistUser]$User
+    [Uri]$Url
+    
+    GistComment([Object]$object, [String]$id) {
+        $this.Body = $object.body
+        $this.CommentId = $object.id
+        $this.CreatedAt = $object.created_at
+        $this.Id = $id
+        $this.UpdatedAt = $object.updated_at
+        $this.Url = $object.url
+        $this.User = $object.user
+    }
+}
+
 Class GistFile {
     [String[]]$Content
     [String]$FileName
