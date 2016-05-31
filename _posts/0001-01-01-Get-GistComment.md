@@ -14,24 +14,35 @@ synopsis: Get a Comment from a Gist Object.
 
 #### **Syntax**
 
-##### **ParamSet**
+__ AllParameterSets
+
+```
+Get-GistComment -Id <String> 
 ```
 
+SingleComment
+
+```
+Get-GistComment -Id <String> -CommentId <String>
 ```
 
 ---
 
 #### **Aliases**
 
+None.
+
 ---
 
 #### **Description**
+
+Get a Comment from a Gist Object using the currently authenticated user context.
 
 ---
 
 #### **Parameters**
 
-[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+[Id \<String\>](https://developer.github.com/v3/gists/#get-a-single-gist)
 
 The unique Id of a Gist Object.
 
@@ -43,15 +54,17 @@ The unique Id of a Gist Object.
 * Accept Pipeline Input: True (ByPropertyNameValue)
 * Accept Wildcard Characters: False
 
-[]()
+[CommentId \<String\>](https://developer.github.com/v3/gists/comments/#get-a-single-comment)
 
+THe unique Id of a Comment from a Gist Object.
 
-
-* Required:
-* Position:
+* ParameterSets: SingleComment
+* Aliases: None
+* Required: True
+* Position: Named
 * Default Value:
-* Accept Pipeline Input:
-* Accept Wildcard Characters:
+* Accept Pipeline Input: True (ByPropertyNameValue)
+* Accept Wildcard Characters: False
 
 [CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
 
@@ -65,15 +78,11 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 * Represents text as a sequence of UTF-16 code units.
 
-[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
-
-* Represents text as a sequence of UTF-16 code units.
-
 ---
 
 #### **Outputs**
 
-[PSGist.Gist](https://developer.github.com/v3/gists/)
+[PSGist.GistComment](https://developer.github.com/v3/gists/comments)
 
 * A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
 

@@ -15,7 +15,7 @@ synopsis: Add a Comment to a Gist Object.
 #### **Syntax**
 
 ```
-Add-GistComment [-Id] <String> [-Comment] <String>
+Add-GistComment -Id <String> -Comment <String>
 ```
 
 ---
