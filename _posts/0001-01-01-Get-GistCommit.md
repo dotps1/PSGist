@@ -14,18 +14,21 @@ synopsis: Get a Commit of Gist Object.
 
 #### **Syntax**
 
-##### **ParamSet**
 ```
-
+Get-GistCommit [-Id] <String[]>
 ```
 
 ---
 
 #### **Aliases**
 
+None.
+
 ---
 
 #### **Description**
+
+Gets a Commit of a Gist Object using the currently authenticated user context.
 
 ---
 
