@@ -14,18 +14,21 @@ synopsis: Get a Fork of a Gist Object.
 
 #### **Syntax**
 
-##### **ParamSet**
 ```
-
+Get-GistFork [-Id] <String[]>
 ```
 
 ---
 
 #### **Aliases**
 
+None.
+
 ---
 
 #### **Description**
+
+Get a Fork from a Gist Object using the currently authenticated user context.
 
 ---
 
