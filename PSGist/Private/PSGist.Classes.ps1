@@ -115,7 +115,7 @@ Class GistFile {
     # Adds a method to get the content of a Gist file.
     # (Get-GitHubGist | Select -First 1).Files[0].GetContent()
     [String[]] GetFileContent() {
-        return Invoke-RestMethod -Method Post -Uri $this.RawUrl
+        return Invoke-RestMethod -Method Get -Uri $this.RawUrl
     }
 }
 
