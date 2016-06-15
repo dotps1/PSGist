@@ -46,16 +46,6 @@ The unique Id of a Gist Object.
 * Accept Pipeline Input: True (ByPropertyNameValue)
 * Accept Wildcard Characters: False
 
-[]()
-
-
-
-* Required:
-* Position:
-* Default Value:
-* Accept Pipeline Input:
-* Accept Wildcard Characters:
-
 [CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
 
 This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
@@ -63,10 +53,6 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 ---
 
 #### **Inputs**
-
-[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
-
-* Represents text as a sequence of UTF-16 code units.
 
 [System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
