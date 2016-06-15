@@ -41,7 +41,7 @@ Function Invoke-GistApi {
         Method = $Method
         ErrorAction = 'Stop'
     }
-    Write-Verbose -Message ('Invoking the REST method: {0}' -f $ApiRequest.Uri)
+    Write-Verbose -Message ('Invoking the REST method: {0}' -f $request.Uri)
         
     if (-not [String]::IsNullOrEmpty($Body)) { 
         $request.Body = $Body 
