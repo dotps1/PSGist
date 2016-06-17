@@ -34,7 +34,7 @@ Get a Fork from a Gist Object using the currently authenticated user context.
 
 #### **Parameters**
 
-[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+[Id \<String\[\]\>](https://developer.github.com/v3/gists/#get-a-single-gist)
 
 The unique Id of a Gist Object.
 
@@ -64,18 +64,45 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 [PSGist.Gist](https://developer.github.com/v3/gists/)
 
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
+* A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 
 ---
 
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+There must be an Authenticated User Context to interact with Gist Objects.
 
 ---
 
 #### **Example 1**
 
+Gets the Forks of Gist e3b5bf37aea3a84b0a40c20d405cdc97.
+
+```
+PS C:\> Get-GistFork -Id e3b5bf37aea3a84b0a40c20d405cdc97
+
+
+User      : robderickson
+Id        : c577e5937feefba8ef7fb59211c1053a
+CreatedAt : 6/17/2016 1:37:26 PM
+UpdatedAt : 6/17/2016 1:37:26 PM
+Url       : https://api.github.com/gists/c577e5937feefba8ef7fb59211c1053a
 ```
 
+#### **Example 2**
+
+Get the users Forked version of Gist e3b5bf37aea3a84b0a40c20d405cdc97.
+
+```
+PS C:\> $fork = Get-GistFork -Id e3b5bf37aea3a84b0a40c20d405cdc97 | Select-Object -First 1; Get-Gist -Id $fork.Id
+
+
+Owner       : robderickson
+Description :
+Id          : c577e5937feefba8ef7fb59211c1053a
+CreatedAt   : 6/17/2016 1:37:26 PM
+UpdatedAt   : 6/17/2016 1:37:26 PM
+Public      : True
+HtmlUrl     : https://gist.github.com/c577e5937feefba8ef7fb59211c1053a
+Files       : DisableLogMeInPatchManagement.ps1
 ```

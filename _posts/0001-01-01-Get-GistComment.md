@@ -42,7 +42,7 @@ Get a Comment from a Gist Object using the currently authenticated user context.
 
 #### **Parameters**
 
-[Id \<String\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+[Id \<String\[\]\>](https://developer.github.com/v3/gists/#get-a-single-gist)
 
 The unique Id of a Gist Object.
 
@@ -84,13 +84,13 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 [PSGist.GistComment](https://developer.github.com/v3/gists/comments)
 
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
+* A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 
 ---
 
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+There must be an Authenticated User Context to interact with Gist Objects.
 
 ---
 
