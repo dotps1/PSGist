@@ -96,7 +96,7 @@ Url       : https://api.github.com/gists/c577e5937feefba8ef7fb59211c1053a
 Get the users Forked version of Gist e3b5bf37aea3a84b0a40c20d405cdc97.
 
 ```
-PS C:\> $fork = Get-GistFork -Id e3b5bf37aea3a84b0a40c20d405cdc97 | Select-Object -First 1; Get-Gist -Id $fork.Id
+PS C:\> Get-GistFork -Id e3b5bf37aea3a84b0a40c20d405cdc97 | Select-Object -First 1 | Get-Gist
 
 
 Owner       : robderickson
