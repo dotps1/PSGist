@@ -4,7 +4,9 @@ Function Set-Gist {
         HelpUri = 'http://dotps1.github.io/PSGist/Set-Gist.html',
         SupportsShouldProcess = $true
     )]
-    [OutputType()]
+    [OutputType(
+        [Void]
+    )]
     
     Param (
         [Parameter(

@@ -11,26 +11,26 @@ PS GitHub:\> Get-Command -Module PSGist | Sort-Object -Property Name
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Function        Add-GistComment                                    1.4.1.0    PSGist
-Function        Add-GistFile                                       1.4.1.0    PSGist
-Function        Copy-Gist                                          1.4.1.0    PSGist
-Alias           Fork-Gist                                          1.4.1.0    PSGist
-Function        Get-Gist                                           1.4.1.0    PSGist
-Function        Get-GistComment                                    1.4.1.0    PSGist
-Function        Get-GistCommit                                     1.4.1.0    PSGist
-Function        Get-GistFork                                       1.4.1.0    PSGist
-Function        Get-GistVersion                                    1.4.1.0    PSGist
-Function        New-Gist                                           1.4.1.0    PSGist
-Function        New-GistOAuthToken                                 1.4.1.0    PSGist
-Function        Remove-Gist                                        1.4.1.0    PSGist
-Function        Remove-GistComment                                 1.4.1.0    PSGist
-Function        Remove-GistFile                                    1.4.1.0    PSGist
-Function        Rename-GistFile                                    1.4.1.0    PSGist
-Function        Save-Gist                                          1.4.1.0    PSGist
-Function        Set-Gist                                           1.4.1.0    PSGist
-Function        Set-GistOAuthToken                                 1.4.1.0    PSGist
-Function        Update-GistComment                                 1.4.1.0    PSGist
-Function        Update-GistFile                                    1.4.1.0    PSGist
+Function        Add-GistComment                                    1.4.1.2    PSGist
+Function        Add-GistFile                                       1.4.1.2    PSGist
+Function        Copy-Gist                                          1.4.1.2    PSGist
+Alias           Fork-Gist                                          1.4.1.2    PSGist
+Function        Get-Gist                                           1.4.1.2    PSGist
+Function        Get-GistComment                                    1.4.1.2    PSGist
+Function        Get-GistCommit                                     1.4.1.2    PSGist
+Function        Get-GistFork                                       1.4.1.2    PSGist
+Function        Get-GistVersion                                    1.4.1.2    PSGist
+Function        New-Gist                                           1.4.1.2    PSGist
+Function        New-GistOAuthToken                                 1.4.1.2    PSGist
+Function        Remove-Gist                                        1.4.1.2    PSGist
+Function        Remove-GistComment                                 1.4.1.2    PSGist
+Function        Remove-GistFile                                    1.4.1.2    PSGist
+Function        Rename-GistFile                                    1.4.1.2    PSGist
+Function        Save-Gist                                          1.4.1.2    PSGist
+Function        Set-Gist                                           1.4.1.2    PSGist
+Function        Set-GistOAuthToken                                 1.4.1.2    PSGist
+Function        Update-GistComment                                 1.4.1.2    PSGist
+Function        Update-GistFile                                    1.4.1.2    PSGist
 ```
 
 
@@ -49,9 +49,10 @@ If you already have a token key you would like to use, you can use the `Set-Gist
 Once you have authenticated, go ahead and start playing with Gist Objects!
 
 ###Update###
-Most functions have been updated to include the -IseScriptPane Dynamic Parameter, this will allow you to create, add, and update file(s) in Gist objects using the content from the ISE.
+Most functions have been updated to include the -IseScriptPane Dynamic Parameter, this will allow you to add and update file(s) in Gist objects using the content directly from the ISE.
 
 Example 1:
+Get a specific Gist.
 ```
 PS GitHub:\> Get-Gist | Select-Object -First 1
 
@@ -67,6 +68,7 @@ Files       : PSGist.psm1
 ```
 
 Example 2:
+Save a Gist to disk.
 ```
 PS C:\> Get-Gist | Select -First 1 | Save-Gist
 

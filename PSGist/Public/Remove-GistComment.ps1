@@ -5,7 +5,7 @@ Function Remove-GistComment {
         SupportsShouldProcess = $true
     )]
     [OutputType(
-        [GistComment]
+        [Void]
     )]
 
     Param (
