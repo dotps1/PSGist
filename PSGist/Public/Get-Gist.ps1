@@ -10,66 +10,66 @@ Function Get-Gist {
     Param (
         [Parameter(
             HelpMessage = 'The login of the GitHub User.',
-            ParameterSetName = 'Owner'
+            ParameterSetName = 'Owner',
+            ValueFromPipelineByPropertyName = $true
         )]
         [String]
         $Owner,
         
         [Parameter(
             HelpMessage = 'The Id of the Gist Object.',
-            ParameterSetName = 'Id'
+            ParameterSetName = 'Id',
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
         )]
-        [String]
+        [String[]]
         $Id,
 
         [Parameter(
-            HelpMessage = 'Target Type for Gist Objects.',
-            ParameterSetName = 'Target'
+            HelpMessage = 'Get Gists that have been starred.',
+            ParameterSetName = 'Starred'
         )]
-        [ValidateSet(
-            'Public', 
-            'Starred'
-        )]
-        [String]
-        $Target
+        [Switch]
+        $Starred
     )
 
     Process {
         switch ($PSCmdlet.ParameterSetName) {
-            'Owner' { 
-                $restMethod = 'users/{0}/gists' -f $Owner
+            'Owner' {
+                foreach ($item in $Owner) {
+                    foreach ($result in (Invoke-GistApi -RestMethod "users/$item/gists" -Method 'GET')) {
+                        [Gist]::new(
+                            $result
+                        )
+                    }
+                }
             }
         
             'Id' { 
-                $restMethod = 'gists/{0}' -f $Id
-            }
-
-            'Target' {
-                switch ($Target) {
-                    'Public' { 
-                        $restMethod = 'gists/public'
-                    }
-                    'Starred' { 
-                        $restMethod = 'gists/starred' 
+                foreach ($item in $Id) {
+                    foreach ($result in (Invoke-GistApi -RestMethod "gists/$item" -Method 'GET')) {
+                        [Gist]::new(
+                            $result
+                        )
                     }
                 }
             }
 
-            default { 
-                $restMethod = 'gists'
+            'Starred' {
+                foreach ($result in (Invoke-GistApi -RestMethod "gists/starred" -Method 'GET')) {
+                    [Gist]::new(
+                        $result
+                    )
+                }
             }
-        }
 
-        $apiCall = @{
-            #Body = ''
-            RestMethod = $restMethod
-            Method = 'GET'
-        }
-    
-        foreach ($result in (Invoke-GistApi @apiCall)) {
-            [Gist]::new(
-                $result
-            )
+            default {
+                foreach ($result in (Invoke-GistApi -RestMethod 'gists' -Method 'GET')) {
+                    [Gist]::new(
+                        $result
+                    )
+                }
+            }
         }
     }
 }
