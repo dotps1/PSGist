@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Remove-GistObject
+title: Remove-Gist
 synopsis: Remove a Gist Object.
 ---
 
@@ -107,5 +107,5 @@ PS C:\> Get-Gist | Select-Object -Last 1 | Remove-Gist -Confirm:$false
 Remove the Gist a5b60bdf7955e029a500.
 
 ```
-Remove-Gist -Id a5b60bdf7955e029a500
+PS C:\> Remove-Gist -Id a5b60bdf7955e029a500
 ```
