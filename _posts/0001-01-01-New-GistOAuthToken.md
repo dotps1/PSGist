@@ -14,79 +14,102 @@ synopsis: Create a New OAuth Token.
 
 #### **Syntax**
 
-##### **ParamSet**
 ```
-
+New-GistOAuthToken [-Credential] <pscredential> [[-TokenDescription] <string>] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
 ---
 
 #### **Aliases**
 
+None.
+
 ---
 
 #### **Description**
+
+Creates a new OAuth token that will allow for authentication when using PSGist.
 
 ---
 
 #### **Parameters**
 
-[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
-
-The unique Id of a Gist Object.
-
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyNameValue)
-* Accept Wildcard Characters: False
-
-[]()
-
-
-
-* Required:
-* Position:
-* Default Value:
-* Accept Pipeline Input:
-* Accept Wildcard Characters:
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+```
+-Confirm
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           (All)
+    Aliases                      cf
+    Dynamic?                     false
+    
+-Credential <pscredential>
+    PSCredential object used to autheniticate to GitHub.
+    
+    Required?                    true
+    Position?                    0
+    Accept pipeline input?       true (ByValue)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
+    
+-TokenDescription <string>
+    A Description for the generated Token.
+    
+    Required?                    false
+    Position?                    1
+    Accept pipeline input?       false
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
+    
+-WhatIf
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           (All)
+    Aliases                      wi
+    Dynamic?                     false
+    
+<CommonParameters>
+    This cmdlet supports the common parameters: Verbose, Debug,
+    ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+    OutBuffer, PipelineVariable, and OutVariable. For more information, see 
+    about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 ---
 
 #### **Inputs**
 
-[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
+[SSystem.Management.Automation.PSCredential](https://msdn.microsoft.com/en-us/library/system.management.automation.pscredential(v=vs.85).aspx)
 
-* Represents text as a sequence of UTF-16 code units.
-
-[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
-
-* Represents text as a sequence of UTF-16 code units.
+* Represents a set of security credentials, such as a user name and a password.
 
 ---
 
 #### **Outputs**
 
-[PSGist.Gist](https://developer.github.com/v3/gists/)
+[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
+* Represents text as a sequence of UTF-16 code units.
 
 ---
 
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+This OAuth token only has permissions to interact with Gist Objects.
 
 ---
 
 #### **Example 1**
 
-```
+Creates a new token based on the value entered into the Get-Credential prompt.
 
+```
+PS C:\> Get-Credential | New-GistOAuthToken
+
+00000000-0000-0000-0000-000000000000
 ```
