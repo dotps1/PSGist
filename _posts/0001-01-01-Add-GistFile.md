@@ -14,16 +14,10 @@ synopsis: Add a file to an existing Gist Object.
 
 #### **Syntax**
 
-Path
-
 ```
-Add-GistFile -Id <String> -Path <String[]>
-```
+Add-GistFile -Id <string> -Path <string[]>  [<CommonParameters>]
 
-IseScriptPane
-
-```
-Add-GistFile -Id <String> [-IseScriptPane] [-FileName <String>]
+Add-GistFile -Id <string> [-IseScriptPane] [-FileName <string>]  [<CommonParameters>]
 ```
 
 ---
@@ -42,67 +36,63 @@ Add one or more files to an existing Gist Object using the currently authenticat
 
 #### **Parameters**
 
-[Id \<String\>](https://developer.github.com/v3/gists/#get-a-single-gist)
-
-The unique Id of a Gist Object.
-
-* Parameter Sets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyName)
-* Accept Wildcard Characters: False
-
-[Path \<String\[\]\>]()
-
-The path to file(s) to add to the Gist Object.
-
-* Parameter Sets: Path
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value: 
-* Accept Pipeline Input: True (ByValue)
-* Accept Wildcard Characters: False
-
-[IseScriptPane \<Switch\>]()
-
-Use the content from the current active script pane as content for the new Gist File.
-
-* Parameter Sets: IseScriptPane
-* Aliases: None
-* Required: False
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: False
-* Accept Wildcard Characters: False
-
-[FileName \<String\>]()
-
-The name of the file to be created if using the content from the Ise.
-
-* Parameter Sets: IseScriptPane
-* Aliases: None
-* Required: False
-* Position: Named
-* Default Value: $psISE.CurrentFile.DisplayName.TrimEnd('*')
-* Accept Pipeline Input: False
-* Accept Wildcard Characters: False
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+```
+-FileName <string>
+    The name of the GistFile.
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           IseScriptPane
+    Aliases                      None
+    Dynamic?                     true
+    
+-Id <string>
+    The Id of the Gist Object.
+    
+    Required?                    true
+    Position?                    Named
+    Accept pipeline input?       true (ByPropertyName)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
+    
+-IseScriptPane
+    Captures the current active ISE Script Pane for the GistFile content.
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           IseScriptPane
+    Aliases                      None
+    Dynamic?                     true
+    
+-Path <string[]>
+    Path to file(s) where the content will be used for the GistFile.
+    
+    Required?                    true
+    Position?                    Named
+    Accept pipeline input?       true (ByValue)
+    Parameter set name           Path
+    Aliases                      None
+    Dynamic?                     false
+    
+<CommonParameters>
+    This cmdlet supports the common parameters: Verbose, Debug,
+    ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+    OutBuffer, PipelineVariable, and OutVariable. For more information, see 
+    about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216). 
+```
 
 ---
 
 #### **Inputs**
 
-[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
+[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
 * Represents text as a sequence of UTF-16 code units.
 
-[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
+[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
 * Represents text as a sequence of UTF-16 code units.
 
@@ -110,7 +100,7 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 #### **Outputs**
 
-[PSGist.Gist](https://developer.github.com/v3/gists/)
+[Gist](https://developer.github.com/v3/gists/)
 
 * A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 

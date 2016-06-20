@@ -15,7 +15,7 @@ synopsis: Get a Fork of a Gist Object.
 #### **Syntax**
 
 ```
-Get-GistFork [-Id] <String[]>
+Get-GistFork [-Id] <string[]>  [<CommonParameters>]
 ```
 
 ---
@@ -34,21 +34,23 @@ Get a Fork from a Gist Object using the currently authenticated user context.
 
 #### **Parameters**
 
-[Id \<String\[\]\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+```
+-Id <string[]>
+    The Id of the Gist Object.
 
-The unique Id of a Gist Object.
+    Required?                    true
+    Position?                    0
+    Accept pipeline input?       true (ByPropertyName)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
 
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyNameValue)
-* Accept Wildcard Characters: False
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+<CommonParameters>
+    This cmdlet supports the common parameters: Verbose, Debug,
+    ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+    OutBuffer, PipelineVariable, and OutVariable. For more information, see
+    about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 ---
 
@@ -62,7 +64,7 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 #### **Outputs**
 
-[PSGist.Gist](https://developer.github.com/v3/gists/)
+[GistFork](https://developer.github.com/v3/gists/)
 
 * A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 

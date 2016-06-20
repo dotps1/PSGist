@@ -15,7 +15,7 @@ synopsis: Add a Comment to a Gist Object.
 #### **Syntax**
 
 ```
-Add-GistComment -Id <String> -Comment <String>
+Add-GistComment [-Id] <string> [-Comment] <string>  [<CommonParameters>]
 ```
 
 ---
@@ -34,33 +34,33 @@ Adds a comment to a Gist Object using the currently authenticated user context.
 
 #### **Parameters**
 
-[Id \<String\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+```
+-Comment <string>
+    The comment content.
 
-The unique Id of a Gist Object.
+    Required?                    true
+    Position?                    1
+    Accept pipeline input?       true (ByPropertyName)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
 
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyName)
-* Accept Wildcard Characters: False
+-Id <string>
+    The Id of the Gist Object.
 
-[Comment \<String\>]()
+    Required?                    true
+    Position?                    0
+    Accept pipeline input?       true (ByPropertyName)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
 
-The comment to be added to the Gist Object.
-
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value: 
-* Accept Pipeline Input: True (ByPropertyName)
-* Accept Wildcard Characters: False
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+<CommonParameters>
+    This cmdlet supports the common parameters: Verbose, Debug,
+    ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+    OutBuffer, PipelineVariable, and OutVariable. For more information, see
+    about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+```
 
 ---
 
@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 #### **Outputs**
 
-[PSGist.GistComment](https://developer.github.com/v3/gists/comments/)
+[GistComment](https://developer.github.com/v3/gists/comments/)
 
 * A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 
