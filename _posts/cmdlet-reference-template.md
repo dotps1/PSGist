@@ -22,7 +22,7 @@ synopsis:
 
 #### **Aliases**
 
-None
+None.
 
 ---
 
@@ -32,33 +32,9 @@ None
 
 #### **Parameters**
 
-[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
+```
 
-The unique Id of a Gist Object.
-
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyName)
-* Accept Wildcard Characters: False
-
-[]()
-
-
-
-* ParameterSets:
-* Aliases:
-* Required:
-* Position:
-* Default Value:
-* Accept Pipeline Input:
-* Accept Wildcard Characters:
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+```
 
 ---
 
@@ -78,13 +54,13 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 [PSGist.Gist](https://developer.github.com/v3/gists/)
 
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
+* A custom .net object representation of the JSON response from the [GitHub API](https://developer.github.com).
 
 ---
 
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+There must be an Authenticated User Context to interact with Gist Objects.
 
 ---
 

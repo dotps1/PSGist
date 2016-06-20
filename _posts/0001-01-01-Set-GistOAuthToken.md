@@ -14,48 +14,61 @@ synopsis: Set the value of GIST_OAUTH_TOKEN.
 
 #### **Syntax**
 
-##### **ParamSet**
 ```
-
+Set-GistOAuthToken [[-Token] <string>] [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
 ---
 
 #### **Aliases**
 
+None.
+
 ---
 
 #### **Description**
+
+Sets the $env:GIST_OATH_TOKEN value.
 
 ---
 
 #### **Parameters**
 
-[Id \<Id\>](https://developer.github.com/v3/gists/#get-a-single-gist)
-
-The unique Id of a Gist Object.
-
-* ParameterSets: All
-* Aliases: None
-* Required: True
-* Position: Named
-* Default Value:
-* Accept Pipeline Input: True (ByPropertyNameValue)
-* Accept Wildcard Characters: False
-
-[]()
-
-
-
-* Required:
-* Position:
-* Default Value:
-* Accept Pipeline Input:
-* Accept Wildcard Characters:
-
-[CommonParameters \<CommonParameters\>](http://go.microsoft.com/fwlink/?LinkID=113216)
-
-This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable.
+```
+-Confirm
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           (All)
+    Aliases                      cf
+    Dynamic?                     false
+    
+-Token <string>
+    Token value to assign the environment variable GIST_OAUTH_TOKEN.
+    
+    Required?                    false
+    Position?                    0
+    Accept pipeline input?       true (ByValue, ByPropertyName)
+    Parameter set name           (All)
+    Aliases                      None
+    Dynamic?                     false
+    
+-WhatIf
+    
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           (All)
+    Aliases                      wi
+    Dynamic?                     false
+    
+<CommonParameters>
+    This cmdlet supports the common parameters: Verbose, Debug,
+    ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+    OutBuffer, PipelineVariable, and OutVariable. For more information, see 
+    about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216). 
+```
 
 ---
 
@@ -65,28 +78,26 @@ This cmdlet supports the common parameters: Verbose, Debug, ErrorAction, ErrorVa
 
 * Represents text as a sequence of UTF-16 code units.
 
-[System.String\[\]](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
+---
+
+#### **Outputs**
+
+[System.String](https://msdn.microsoft.com/en-us/library/system.string%28v=vs.110%29.aspx)
 
 * Represents text as a sequence of UTF-16 code units.
 
 ---
 
-#### **Outputs**
-
-[PSGist.Gist](https://developer.github.com/v3/gists/)
-
-* A custom .net object representation of the JSON repsonse from the [GitHub API](https://developer.github.com).
-
----
-
 #### **Notes**
 
-There must be an Authenticated User Context to intereact with Gist Objects.
+After creating an OAuth token, the value is not able to be retrieved, which means this function will rarely be needed.
 
 ---
 
 #### **Example 1**
 
-```
+Sets the $env:GIST_OAUTH_TOKEN value to 00000000-0000-0000-0000-000000000000.
 
+```
+PS C:\> Set-GistOAuthToken -Token 00000000-0000-0000-0000-000000000000 -Confirm:$false
 ```
