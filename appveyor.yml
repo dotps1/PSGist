@@ -1,6 +1,6 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
-version: 2.5.{build}
+version: 1.4.{build}
 os: WMF 5
 skip_commits:
   message: /updated readme.*/
@@ -18,4 +18,3 @@ notifications:
   - provider: Slack
     incoming_webhook:
       secure: AbntoBWt4UaZffU0mBhQjuXCQAIegqF1NtTVdnFyinHHS23C+b/r4/lWGDzneboipU5R9/6ti/x1p1ceodafH5iv+il9EyS87/M8TaE3hf8=
-  
