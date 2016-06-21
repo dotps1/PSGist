@@ -82,8 +82,8 @@ Function Update-GistFile {
 
         if ($PSCmdlet.ParameterSetName -ne 'IseScriptPane') {
             $body.files.Add(
-                $(Split-Path -Path $file -Leaf), @{ 
-                    content = ((Get-Content -Path $file -Raw).PSObject.BaseObject) 
+                $(Split-Path -Path $Path -Leaf), @{ 
+                    content = ((Get-Content -Path $Path -Raw).PSObject.BaseObject) 
                 }
             )
         } else {
