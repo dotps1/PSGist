@@ -1,1 +1,1 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/8tldqe5wr9y3fcf8?svg=true)](https://ci.appveyor.com/project/dotps1/psgist)
+[![Build status](https://ci.appveyor.com/api/projects/status/cb3nmam6sqs4b8sv?svg=true)](https://ci.appveyor.com/project/dotps1/psgist)
