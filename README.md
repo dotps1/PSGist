@@ -7,46 +7,39 @@ This is a PowerShell module that uses the GitHub API to interact and manipulate 
 
 
 ```
-PS GitHub:\> Get-Command -Module PSGist | Sort-Object -Property Name
+PS GitHub:\> Get-Command -Module PSGist | Sort-Object -Property Name | Select-Object -Property Name
 
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Function        Add-GistComment                                    1.4.1.2    PSGist
-Function        Add-GistFile                                       1.4.1.2    PSGist
-Function        Copy-Gist                                          1.4.1.2    PSGist
-Alias           Fork-Gist                                          1.4.1.2    PSGist
-Function        Get-Gist                                           1.4.1.2    PSGist
-Function        Get-GistComment                                    1.4.1.2    PSGist
-Function        Get-GistCommit                                     1.4.1.2    PSGist
-Function        Get-GistFork                                       1.4.1.2    PSGist
-Function        Get-GistVersion                                    1.4.1.2    PSGist
-Function        New-Gist                                           1.4.1.2    PSGist
-Function        New-GistOAuthToken                                 1.4.1.2    PSGist
-Function        Remove-Gist                                        1.4.1.2    PSGist
-Function        Remove-GistComment                                 1.4.1.2    PSGist
-Function        Remove-GistFile                                    1.4.1.2    PSGist
-Function        Rename-GistFile                                    1.4.1.2    PSGist
-Function        Save-Gist                                          1.4.1.2    PSGist
-Function        Set-Gist                                           1.4.1.2    PSGist
-Function        Set-GistOAuthToken                                 1.4.1.2    PSGist
-Function        Update-GistComment                                 1.4.1.2    PSGist
-Function        Update-GistFile                                    1.4.1.2    PSGist
+Name
+----
+Add-GistComment
+Add-GistFile
+Copy-Gist
+Fork-Gist
+Get-Gist
+Get-GistComment
+Get-GistCommit
+Get-GistFork
+Get-GistVersion
+New-Gist
+New-GistOAuthToken
+Remove-Gist
+Remove-GistComment
+Remove-GistFile
+Rename-GistFile
+Save-Gist
+Set-Gist
+Update-GistComment
+Update-GistFile
 ```
 
 
 In order to use this module, you will need to create a new GitHub API OAuth Token.  To do this, use the `New-GistOAuthToken` cmdlet.
 
 ```
-New-GistOAuthToken -Credental <PSCredential> [-TokenDescription [String]]
+New-GistOAuthToken -Credental <PSCredential>
 ```
 
-This will generate a new token with access only to Gists to be used by this module.  The default name is `PSGist PowerShell Module (<ComputerName>)`, however this can be changed with the `-TokenDescription` Parameter.  
-It will also create a set a new environment variable with the value, `$env:GIST_OAUTH_TOKEN`.
-If you already have a token key you would like to use, you can use the `Set-GistOAuthToken` function to achieve this.
-(Chances are you will not have a token value, so most likely, this function will not be used.)
-
-
-Once you have authenticated, go ahead and start playing with Gist Objects!
+This will generate a new token with access only to Gists to be used by this module.  Once you have authenticated, go ahead and start playing with Gist Objects!
 
 ###Update###
 Most functions have been updated to include the -IseScriptPane Dynamic Parameter, this will allow you to add and update file(s) in Gist objects using the content directly from the ISE.

@@ -1,12 +1,11 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
-version: 1.4.{build}
 os: WMF 5
 skip_commits:
   message: /updated readme.*/
 install:
-  - ps: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Confirm:$false -Force -ErrorAction Stop
-  - ps: Install-Module -Name Configuration, Pester, PSScriptAnalyzer -Confirm:$false -Force -ErrorAction SilentlyContinue
+  - ps: Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Confirm:$false -Force -ErrorAction Stop | Out-Null
+  - ps: Install-Module -Name Configuration, Pester, PSScriptAnalyzer -Confirm:$false -Force -ErrorAction SilentlyContinue | Out-Null
 build: off
 test_script:
   - ps: . .\Invoke-AppveyorBuild.ps1

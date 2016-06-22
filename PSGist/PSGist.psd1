@@ -84,7 +84,6 @@ FunctionsToExport = 'Add-GistComment',
     'Rename-GistFile',
     'Save-Gist',
     'Set-Gist',
-    'Set-GistOAuthToken',
     'Update-GistComment',
     'Update-GistFile'
 
@@ -125,7 +124,6 @@ FileList = @(
     'Public\Remove-GistFile.ps1'
     'Public\Rename-GistFile.ps1'
     'Public\Save-Gist.ps1'
-    'Public\Set-Gist.ps1'
     'Public\Set-GistOAuthToken.ps1'
     'Public\Update-GistComment.ps1'
     'Public\Update-GistFile.ps1'

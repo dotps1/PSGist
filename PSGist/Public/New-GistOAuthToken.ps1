@@ -26,13 +26,24 @@ Function New-GistOAuthToken {
         $TokenDescription = "PSGist PowerShell Module ($env:ComputerName)"
     )
     
+    Begin {
+        if (-not (Test-Path -Path $env:AppData\PSGist\Private)) {
+            try {
+                New-Item -Path $env:AppData\PSGist -Name Private -ItemType Directory -ErrorAction Stop | 
+                    Out-Null
+            } catch {
+                throw $_
+            }
+        }
+    }
+
     Process {
         try {
             $body = @{
                 scopes = @(
                     'gist'
                 )
-                note = $TokenDescription
+                note = "PSGist PowerShell Module Token - $($Credential.UserName)\$env:ComputerName"
             }
 
             $params = @{
@@ -49,14 +60,25 @@ Function New-GistOAuthToken {
 
             if ($PSCmdlet.ShouldProcess([String]::Empty, 'Create a new Gist OAuth Token?', $PSCmdlet.MyInvocation.InvocationName)) {
                 $response = Invoke-RestMethod @params -ErrorAction Stop
-
-                $env:GIST_OAUTH_TOKEN = $response.Token
-                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $response.Token, 'User')
-
-                Write-Output -InputObject "OAuth Token Value: $env:GIST_OAUTH_TOKEN"
+                
+                New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $($Credential.UserName), (ConvertTo-SecureString -String $response.Token -AsPlainText -Force) | 
+                    Export-Clixml -Path $env:AppData\PSGist\Private\OAuthToken.xml -Force |
+                        Out-Null
             }
+
         } catch {
-            throw (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
+            $message = (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
+            if ($message -eq 'Validation Failed') {
+                throw "A token with description '$($body.note)' already exists.  Manually delete the token from https://github.com/settings/tokens."
+            } elseif ($null -ne $message) {
+                throw $message
+            } else {
+                throw $_
+            }
+        } finally {
+            if ($null -ne $env:GIST_OAUTH_TOKEN) {
+                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $null)
+            }
         }
     }
 }

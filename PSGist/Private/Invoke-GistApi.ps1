@@ -9,10 +9,10 @@ Function Invoke-GistApi {
         $Headers = @{ },
         
         [Parameter(
-            Mandatory = $false
+            Mandatory = $true
         )]
         [String] 
-        $Method = 'Get',
+        $Method,
 
         [Parameter(
             Mandatory = $true
@@ -25,15 +25,21 @@ Function Invoke-GistApi {
         $Body
     )
     
-    if ([String]::IsNullOrEmpty($env:GIST_OAUTH_TOKEN)) {
-        try {
-            New-GistOAuthToken -ErrorAction Stop | Out-Null
-        } catch {
-            Write-Error $_.ToString() -ErrorAction Stop
-        }
+    if (-not (Test-Path -Path $env:AppData\PSGist\Private\OAuthToken.xml)) {
+        New-GistOAuthToken |
+            Out-Null
+        
+        Start-Sleep -Milliseconds 2500
     }
 
-    $Headers.Add('Authorization', 'token {0}' -f $env:GIST_OAUTH_TOKEN)
+    try {
+        $oAuthToken = (Import-Clixml -Path $env:AppData\PSGist\Private\OAuthToken.xml -ErrorAction Stop).GetNetworkCredential().Password 
+    } catch {
+        Write-Error -Message 'Failed to decrypt OAuth Token.'
+        return
+    }
+
+    $Headers.Add('Authorization', 'token {0}' -f $oAuthToken)
 
     $request = @{
         Headers = $Headers
@@ -41,7 +47,6 @@ Function Invoke-GistApi {
         Method = $Method
         ErrorAction = 'Stop'
     }
-    Write-Verbose -Message ('Invoking the REST method: {0}' -f $request.Uri)
         
     if (-not [String]::IsNullOrEmpty($Body)) { 
         $request.Body = $Body 
@@ -50,6 +55,11 @@ Function Invoke-GistApi {
     try {
         Invoke-RestMethod @request
     } catch {
-        throw (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
+        $message = (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
+        if ($null -ne $message) {
+            throw $message
+        } else {
+            throw $_
+        }
     }
 }
