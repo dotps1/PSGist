@@ -15,7 +15,7 @@ synopsis: Create a New OAuth Token.
 #### **Syntax**
 
 ```
-New-GistOAuthToken [-Credential] <pscredential> [[-TokenDescription] <string>] [-WhatIf] [-Confirm]  [<CommonParameters>]
+New-GistOAuthToken [-Credential] <pscredential> [-WhatIf] [-Confirm]  [<CommonParameters>]
 ```
 
 ---
@@ -50,16 +50,6 @@ Creates a new OAuth token that will allow for authentication when using PSGist.
     Required?                    true
     Position?                    0
     Accept pipeline input?       true (ByValue)
-    Parameter set name           (All)
-    Aliases                      None
-    Dynamic?                     false
-    
--TokenDescription <string>
-    A Description for the generated Token.
-    
-    Required?                    false
-    Position?                    1
-    Accept pipeline input?       false
     Parameter set name           (All)
     Aliases                      None
     Dynamic?                     false
