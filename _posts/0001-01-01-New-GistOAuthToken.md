@@ -48,7 +48,7 @@ Creates a new OAuth token that will allow for authentication when using PSGist.
     PSCredential object used to autheniticate to GitHub.
     
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByValue)
     Parameter set name           (All)
     Aliases                      None

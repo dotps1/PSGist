@@ -39,7 +39,7 @@ Get a Fork from a Gist Object using the currently authenticated user context.
     The Id of the Gist Object.
 
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None

@@ -39,7 +39,7 @@ Removes a Comment from a Gist Object using the currently authenticated user cont
     The Id of the Gist Object Comment.
     
     Required?                    true
-    Position?                    1
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
@@ -58,7 +58,7 @@ Removes a Comment from a Gist Object using the currently authenticated user cont
     The Id of the Gist Object.
     
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None

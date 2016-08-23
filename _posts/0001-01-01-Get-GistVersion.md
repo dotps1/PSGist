@@ -37,7 +37,7 @@ Get a specific revision of a Gist Object using the currently authenticated user 
     The Id of the Gist Object.
     
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
@@ -46,7 +46,7 @@ Get a specific revision of a Gist Object using the currently authenticated user 
 -Version <string>
     
     Required?                    true
-    Position?                    1
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None

@@ -39,7 +39,7 @@ Updates an existing comment from a Gist Object using the currently authenticated
     The comment content.
     
     Required?                    true
-    Position?                    2
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
@@ -49,7 +49,7 @@ Updates an existing comment from a Gist Object using the currently authenticated
     The Id of the Gist Object Comment.
     
     Required?                    true
-    Position?                    1
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
@@ -68,7 +68,7 @@ Updates an existing comment from a Gist Object using the currently authenticated
     The Id of the Gist Object.
     
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None

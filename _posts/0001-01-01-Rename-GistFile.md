@@ -37,7 +37,7 @@ Renames a Gist File using the currently authenticated user context.
     The Id of the Gist Object.
     
     Required?                    true
-    Position?                    0
+    Position?                    Named
     Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
@@ -47,7 +47,7 @@ Renames a Gist File using the currently authenticated user context.
     New name of the GistFile.
     
     Required?                    true
-    Position?                    2
+    Position?                    Named
     Accept pipeline input?       false
     Parameter set name           (All)
     Aliases                      None
@@ -57,7 +57,7 @@ Renames a Gist File using the currently authenticated user context.
     Current name of the GistFile.
     
     Required?                    true
-    Position?                    1
+    Position?                    Named
     Accept pipeline input?       false
     Parameter set name           (All)
     Aliases                      None
