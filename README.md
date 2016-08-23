@@ -14,6 +14,7 @@ Name
 Add-GistComment
 Add-GistFile
 Copy-Gist
+Find-Gist
 Fork-Gist
 Get-Gist
 Get-GistComment
@@ -90,6 +91,24 @@ Example 5:
 ```powershell
 # Get the first revision of a Gist.
 Get-Gist | Select -First 1 | Get-GistCommit | Select -Last 1 | Get-GistVersion
+```
+
+
+Added a new cmdlet to search for Gists:
+```
+dotps1@mypowerrig GitHub:\PSGist [master ≡] $ Find-Gist -FileNameKeyword Java
+
+
+Owner       : dotps1
+Description : Creates a new Sccm Java Application and Deployment Type.  All three functions are
+              required.  (See comments for details.)
+Id          : 492023ebd737f9cc46aa
+CreatedAt   : 8/14/2015 2:35:19 PM
+UpdatedAt   : 4/26/2016 12:09:33 PM
+Public      : True
+HtmlUrl     : https://gist.github.com/492023ebd737f9cc46aa
+Files       : {.New-SccmJavaApplication.ps1, Get-MsiProductCode.ps1,
+              Invoke-JavaDownloadAndMsiExtraction.ps1}
 ```
 
 ---
