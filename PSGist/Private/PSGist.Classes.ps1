@@ -48,7 +48,7 @@ Class Gist {
         $this.Public = $Public
     }
 
-    # TODO: develope Create() and Delete() methods.
+    # TODO: Create() and Delete() methods.
 }
 
 Class GistChangeStatus {

@@ -54,7 +54,9 @@ PowerShellVersion = '5.0'
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-# ScriptsToProcess = @()
+ScriptsToProcess = @(
+    "Private\PSGist.Classes.ps1"
+)
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
@@ -71,6 +73,7 @@ FormatsToProcess = @(
 FunctionsToExport = 'Add-GistComment',
     'Add-GistFile',
     'Copy-Gist',
+    'Find-Gist',
     'Get-Gist',
     'Get-GistCommit',
     'Get-GistComment',
@@ -112,6 +115,7 @@ FileList = @(
     'Public\Add-GistComment.ps1'
     'Public\Add-GistFile.ps1'
     'Public\Copy-Gist.ps1'
+    'Public\Find-Gist.ps1'
     'Public\Get-Gist.ps1'
     'Public\Get-GistCommit.ps1'
     'Public\Get-GistComment.ps1'
