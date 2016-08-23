@@ -5,6 +5,7 @@ Function Set-Gist {
         SupportsShouldProcess = $true
     )]
     [OutputType(
+        [Gist],
         [Void]
     )]
     
