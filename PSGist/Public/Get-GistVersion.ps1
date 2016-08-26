@@ -1,6 +1,6 @@
 Function Get-GistVersion {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistVersion.html'
+        HelpUri = "http://dotps1.github.io/PSGist/Get-GistVersion.html"
     )]
     [OutputType(
         [Gist]
@@ -8,7 +8,7 @@ Function Get-GistVersion {
 
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -16,7 +16,7 @@ Function Get-GistVersion {
         $Id,
 
         [Parameter(
-            HelpMessageBaseName = 'The Version Id of the Gist Object.',
+            HelpMessageBaseName = "The Version Id of the Gist Object.",
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -26,9 +26,9 @@ Function Get-GistVersion {
 
     Process {
         $apiCall = @{
-            #Body = ''
-            RestMethod = 'gists/{0}/{1}' -f $Id, $Version
-            Method = 'GET'
+            #Body = ""
+            RestMethod = "gists/{0}/{1}" -f $Id, $Version
+            Method = "GET"
         }
     
         foreach ($result in (Invoke-GistApi @apiCall)) {

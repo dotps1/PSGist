@@ -1,6 +1,6 @@
 Function Get-GistCommit {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistCommit.html'
+        HelpUri = "http://dotps1.github.io/PSGist/Get-GistCommit.html"
     )]
     [OutputType(
         [GistHistory]
@@ -8,7 +8,7 @@ Function Get-GistCommit {
 
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -19,9 +19,9 @@ Function Get-GistCommit {
     Process {
         foreach ($item in $Id) {
             $apiCall = @{
-                #Body = ''
-                RestMethod = 'gists/{0}/commits' -f $item
-                Method = 'GET'
+                #Body = ""
+                RestMethod = "gists/{0}/commits" -f $item
+                Method = "GET"
             }
             
             foreach ($result in (Invoke-GistApi @apiCall)) {

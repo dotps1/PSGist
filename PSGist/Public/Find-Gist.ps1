@@ -6,11 +6,14 @@
     )]
 
     Param (
-        [Parameter()]
+        [Parameter(
+            HelpMessage = "The username of the GitHub User."
+        )]
         [String]
-        $Username = ((Import-Clixml -Path $env:AppData\PSGist\Private\OAuthToken.xml -ErrorAction Stop).GetNetworkCredential().Username),
+        $Owner = ((Import-Clixml -Path $env:AppData\PSGist\Private\OAuthToken.xml -ErrorAction Stop).GetNetworkCredential().Username),
 
         [Parameter(
+            HelpMessage = "The keywords to search for in the Gist filename.",
             Mandatory = $true
         )]
         [String]
@@ -18,7 +21,7 @@
 
     )
 
-    $uri = "https://gist.github.com/search?q=user%3A{0}" -f $Username
+    $uri = "https://gist.github.com/search?q=user%3A{0}" -f $Owner
 
     foreach ($word in ($FileNameKeyword -split " ")) {
         $uri += "+{0}" -f $word
@@ -27,7 +30,7 @@
     $gistLinks = (Invoke-WebRequest -Uri $uri).Links |
         Select-Object -ExpandProperty href |
             Where-Object {
-                $_ -match "https://gist.github.com/{0}" -f $Username
+                $_ -match "https://gist.github.com/{0}" -f $Owner
             }
 
     if ($null -eq $gistLinks) {

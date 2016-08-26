@@ -1,7 +1,7 @@
 Function Get-Gist {
     [CmdletBinding(
-        DefaultParameterSetName = '__AllParameterSets',
-        HelpUri = 'http://dotps1.github.io/PSGist/Get-Gist.html'
+        DefaultParameterSetName = "__AllParameterSets",
+        HelpUri = "http://dotps1.github.io/PSGist/Get-Gist.html"
     )]
     [OutputType(
         [Gist]
@@ -9,16 +9,16 @@ Function Get-Gist {
 
     Param (
         [Parameter(
-            HelpMessage = 'The login of the GitHub User.',
-            ParameterSetName = 'Owner',
+            HelpMessage = "The username of the GitHub User.",
+            ParameterSetName = "Owner",
             ValueFromPipelineByPropertyName = $true
         )]
         [String]
         $Owner,
         
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
-            ParameterSetName = 'Id',
+            HelpMessage = "The Id of the Gist Object.",
+            ParameterSetName = "Id",
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -26,8 +26,8 @@ Function Get-Gist {
         $Id,
 
         [Parameter(
-            HelpMessage = 'Get Gists that have been starred.',
-            ParameterSetName = 'Starred'
+            HelpMessage = "Get Gists that have been starred.",
+            ParameterSetName = "Starred"
         )]
         [Switch]
         $Starred
@@ -35,9 +35,9 @@ Function Get-Gist {
 
     Process {
         switch ($PSCmdlet.ParameterSetName) {
-            'Owner' {
+            "Owner" {
                 foreach ($item in $Owner) {
-                    foreach ($result in (Invoke-GistApi -RestMethod "users/$item/gists" -Method 'GET')) {
+                    foreach ($result in (Invoke-GistApi -RestMethod "users/$item/gists" -Method "GET")) {
                         [Gist]::new(
                             $result
                         )
@@ -45,9 +45,9 @@ Function Get-Gist {
                 }
             }
         
-            'Id' { 
+            "Id" { 
                 foreach ($item in $Id) {
-                    foreach ($result in (Invoke-GistApi -RestMethod "gists/$item" -Method 'GET')) {
+                    foreach ($result in (Invoke-GistApi -RestMethod "gists/$item" -Method "GET")) {
                         [Gist]::new(
                             $result
                         )
@@ -55,8 +55,8 @@ Function Get-Gist {
                 }
             }
 
-            'Starred' {
-                foreach ($result in (Invoke-GistApi -RestMethod "gists/starred" -Method 'GET')) {
+            "Starred" {
+                foreach ($result in (Invoke-GistApi -RestMethod "gists/starred" -Method "GET")) {
                     [Gist]::new(
                         $result
                     )
@@ -64,7 +64,7 @@ Function Get-Gist {
             }
 
             default {
-                foreach ($result in (Invoke-GistApi -RestMethod 'gists' -Method 'GET')) {
+                foreach ($result in (Invoke-GistApi -RestMethod "gists" -Method "GET")) {
                     [Gist]::new(
                         $result
                     )

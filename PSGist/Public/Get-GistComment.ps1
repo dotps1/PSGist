@@ -1,12 +1,12 @@
 Function Get-GistComment {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Get-GistComment.html'
+        HelpUri = "http://dotps1.github.io/PSGist/Get-GistComment.html"
     )]
     [OutputType([GistComment])]
     
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -14,8 +14,8 @@ Function Get-GistComment {
         $Id,
         
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object Comment.',
-            ParameterSetName = 'SingleComment', 
+            HelpMessage = "The Id of the Gist Object Comment.",
+            ParameterSetName = "SingleComment", 
             ValueFromPipelineByPropertyName = $true
         )]
         [String]
@@ -24,19 +24,19 @@ Function Get-GistComment {
     
     Process {
         switch ($PSCmdlet.ParameterSetName) {
-            'SingleComment' {
-                $restMethod = 'gists/{0}/comments/{1}' -f $Id, $CommentId
+            "SingleComment" {
+                $restMethod = "gists/{0}/comments/{1}" -f $Id, $CommentId
             }
             
             default {
-                $restMethod = 'gists/{0}/comments' -f $Id
+                $restMethod = "gists/{0}/comments" -f $Id
             }
         }
         
         $apiCall = @{
-            #Body = ''
+            #Body = ""
             RestMethod = $restMethod
-            Method = 'GET'
+            Method = "GET"
         }
     
         foreach ($result in (Invoke-GistApi @apiCall)) {

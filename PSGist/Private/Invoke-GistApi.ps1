@@ -35,17 +35,17 @@ Function Invoke-GistApi {
     try {
         $oAuthToken = (Import-Clixml -Path $env:AppData\PSGist\Private\OAuthToken.xml -ErrorAction Stop).GetNetworkCredential().Password 
     } catch {
-        Write-Error -Message 'Failed to decrypt OAuth Token.'
+        Write-Error -Message "Failed to decrypt OAuth Token."
         return
     }
 
-    $Headers.Add('Authorization', 'token {0}' -f $oAuthToken)
+    $Headers.Add("Authorization", "token {0}" -f $oAuthToken)
 
     $request = @{
         Headers = $Headers
-        Uri = 'https://api.github.com/{0}' -f $RestMethod
+        Uri = "https://api.github.com/{0}" -f $RestMethod
         Method = $Method
-        ErrorAction = 'Stop'
+        ErrorAction = "Stop"
     }
         
     if (-not [String]::IsNullOrEmpty($Body)) { 

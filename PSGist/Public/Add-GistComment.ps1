@@ -1,6 +1,6 @@
 Function Add-GistComment {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Add-GistComment.html'
+        HelpUri = "http://dotps1.github.io/PSGist/Add-GistComment.html"
     )]
     [OutputType(
         [GistComment]
@@ -8,7 +8,7 @@ Function Add-GistComment {
 
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -16,7 +16,7 @@ Function Add-GistComment {
         $Id,
     
         [Parameter(
-            HelpMessage = 'The comment content.',
+            HelpMessage = "The comment content.",
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -31,8 +31,8 @@ Function Add-GistComment {
         
         $apiCall = @{
             Body = ConvertTo-Json -InputObject $body -Compress
-            RestMethod = 'gists/{0}/comments' -f $Id
-            Method = 'POST' 
+            RestMethod = "gists/{0}/comments" -f $Id
+            Method = "POST" 
         }
         
         [GistComment]::new(

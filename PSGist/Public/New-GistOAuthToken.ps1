@@ -1,7 +1,7 @@
 Function New-GistOAuthToken {
     [CmdletBinding(
-        ConfirmImpact = 'Low',
-        HelpUri = 'http://dotps1.github.io/PSGist/New-GistOAuthToken.html',
+        ConfirmImpact = "Low",
+        HelpUri = "http://dotps1.github.io/PSGist/New-GistOAuthToken.html",
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -10,7 +10,7 @@ Function New-GistOAuthToken {
 
     Param (
         [Parameter(
-            HelpMessage = 'PSCredential object used to autheniticate to GitHub.',
+            HelpMessage = "PSCredential object used to autheniticate to GitHub.",
             Mandatory = $true,
             ValueFromPipeline = $true
         )]
@@ -20,7 +20,7 @@ Function New-GistOAuthToken {
         $Credential,
 
         [Parameter(
-            HelpMessage = 'A Description for the generated Token.'
+            HelpMessage = "A Description for the generated Token."
         )]
         [String]
         $TokenDescription = "PSGist PowerShell Module ($env:ComputerName)"
@@ -41,24 +41,24 @@ Function New-GistOAuthToken {
         try {
             $body = @{
                 scopes = @(
-                    'gist'
+                    "gist"
                 )
                 note = "PSGist PowerShell Module Token - $($Credential.UserName)\$env:ComputerName"
             }
 
             $params = @{
-                Uri = 'https://api.github.com/authorizations'
-                Method = 'POST'
+                Uri = "https://api.github.com/authorizations"
+                Method = "POST"
                 Headers = @{
-                    Authorization = 'Basic ' + [Convert]::ToBase64String(
+                    Authorization = "Basic " + [Convert]::ToBase64String(
                         [Text.Encoding]::ASCII.GetBytes("$($Credential.UserName):$($Credential.GetNetworkCredential().Password)")
                     )
                 }
-                ContentType = 'application/json'
+                ContentType = "application/json"
                 Body = (ConvertTo-Json $body -Compress)
             }
 
-            if ($PSCmdlet.ShouldProcess([String]::Empty, 'Create a new Gist OAuth Token?', $PSCmdlet.MyInvocation.InvocationName)) {
+            if ($PSCmdlet.ShouldProcess([String]::Empty, "Create a new Gist OAuth Token?", $PSCmdlet.MyInvocation.InvocationName)) {
                 $response = Invoke-RestMethod @params -ErrorAction Stop
                 
                 New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $($Credential.UserName), (ConvertTo-SecureString -String $response.Token -AsPlainText -Force) | 
@@ -68,7 +68,7 @@ Function New-GistOAuthToken {
 
         } catch {
             $message = (ConvertFrom-Json -InputObject $_.ErrorDetails.Message).message
-            if ($message -eq 'Validation Failed') {
+            if ($message -eq "Validation Failed") {
                 throw "A token with description '$($body.note)' already exists.  Manually delete the token from https://github.com/settings/tokens."
             } elseif ($null -ne $message) {
                 throw $message
@@ -76,8 +76,9 @@ Function New-GistOAuthToken {
                 throw $_
             }
         } finally {
+            # In the early life of this module the OAuth Token was stored it an Environment variable, this is just some clean up now that its serailized to disk.
             if ($null -ne $env:GIST_OAUTH_TOKEN) {
-                [Environment]::SetEnvironmentVariable('GIST_OAUTH_TOKEN', $null)
+                [Environment]::SetEnvironmentVariable("GIST_OAUTH_TOKEN", $null)
             }
         }
     }

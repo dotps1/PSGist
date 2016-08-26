@@ -1,6 +1,6 @@
 Function Rename-GistFile {
     [CmdletBinding(
-        HelpUri = 'http://dotps1.github.io/PSGist/Rename-GistFile.html'
+        HelpUri = "http://dotps1.github.io/PSGist/Rename-GistFile.html"
     )]
     [OutputType(
         [Gist]
@@ -8,7 +8,7 @@ Function Rename-GistFile {
     
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -16,14 +16,14 @@ Function Rename-GistFile {
         $Id,
 
         [Parameter(
-            HelpMessage = 'Current name of the GistFile.',
+            HelpMessage = "Current name of the GistFile.",
             Mandatory = $true
         )]
         [String]
         $OldName,
 
         [Parameter(
-            HelpMessage = 'New name of the GistFile.',
+            HelpMessage = "New name of the GistFile.",
             Mandatory = $true
         )]
         [String]
@@ -41,8 +41,8 @@ Function Rename-GistFile {
 
         $apiCall = @{
             Body = ConvertTo-Json -InputObject $body
-            RestMethod = 'gists/{0}' -f $Id
-            Method = 'PATCH'
+            RestMethod = "gists/{0}" -f $Id
+            Method = "PATCH"
         }
             
         [Gist]::new(

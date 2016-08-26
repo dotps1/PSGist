@@ -1,7 +1,7 @@
 function Remove-Gist {
     [CmdletBinding(
-        ConfirmImpact = 'High',
-        HelpUri = 'http://dotps1.github.io/PSGist/Remove-Gist.html',
+        ConfirmImpact = "High",
+        HelpUri = "http://dotps1.github.io/PSGist/Remove-Gist.html",
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -10,7 +10,7 @@ function Remove-Gist {
 
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -22,9 +22,9 @@ function Remove-Gist {
         foreach ($item in $Id) {
             if ($PSCmdlet.ShouldProcess($item)) {
                 $apiCall = @{
-                    #Body = ''
-                    RestMethod = 'gists/{0}' -f $item
-                    Method = 'DELETE'
+                    #Body = ""
+                    RestMethod = "gists/{0}" -f $item
+                    Method = "DELETE"
                 }
     
                 Invoke-GistApi @apiCall

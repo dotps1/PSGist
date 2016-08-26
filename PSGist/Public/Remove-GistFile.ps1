@@ -1,7 +1,7 @@
 function Remove-GistFile {
     [CmdletBinding(
-        ConfirmImpact = 'High',
-        HelpUri = 'http://dotps1.github.io/PSGist/Remove-GistFile.html',
+        ConfirmImpact = "High",
+        HelpUri = "http://dotps1.github.io/PSGist/Remove-GistFile.html",
         SupportsShouldProcess = $true
     )]
     [OutputType(
@@ -10,7 +10,7 @@ function Remove-GistFile {
 
     Param (
         [Parameter(
-            HelpMessage = 'The Id of the Gist Object.',
+            HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
             ValueFromPipelineByPropertyName = $true
         )]
@@ -18,7 +18,7 @@ function Remove-GistFile {
         $Id,
 
         [Parameter(
-            HelpMessage = 'The name of the GistFile.',
+            HelpMessage = "The name of the GistFile.",
             Mandatory = $true    
         )]
         [String[]]
@@ -38,8 +38,8 @@ function Remove-GistFile {
             if ($PSCmdlet.ShouldProcess($item)) {
                 $apiCall = @{
                     Body = ConvertTo-Json -InputObject $body
-                    RestMethod = 'gists/{0}' -f $item
-                    Method = 'PATCH'
+                    RestMethod = "gists/{0}" -f $item
+                    Method = "PATCH"
                 }
     
                 Invoke-GistApi @apiCall | Out-Null
