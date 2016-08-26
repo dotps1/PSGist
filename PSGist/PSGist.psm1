@@ -29,7 +29,7 @@ if (-not (Test-Path -Path $env:APPDATA\PSGist)) {
     New-Item -Path "$env:APPDATA\PSGist" -ItemType Directory
 }
 
-New-PSDrive -Name "Gists" -PSProvider FileSystem -Root "$env:APPDATA\PSGist" |
+New-PSDrive -Name "Gists" -PSProvider FileSystem -Root "$env:APPDATA\PSGist" -Scope 1 |
     Out-Null
 
 #endregion PSDrives
