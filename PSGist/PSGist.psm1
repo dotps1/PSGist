@@ -1,8 +1,8 @@
 #region ProviderPath
 
 $paths = @(
-    'Private',
-    'Public'
+    "Private",
+    "Public"
 )
 
 foreach ($path in $paths) {
@@ -18,6 +18,18 @@ foreach ($path in $paths) {
 
 #region Aliases
 
-New-Alias -Name 'Fork-Gist' -Value 'Copy-Gist'
+New-Alias -Name "Fork-Gist" -Value "Copy-Gist"
 
 #endregion Aliases
+
+
+#region PSDrives
+
+if (-not (Test-Path -Path $env:APPDATA\PSGist)) {
+    New-Item -Path "$env:APPDATA\PSGist" -ItemType Directory
+}
+
+New-PSDrive -Name "Gists" -PSProvider FileSystem -Root "$env:APPDATA\PSGist" |
+    Out-Null
+
+#endregion PSDrives
