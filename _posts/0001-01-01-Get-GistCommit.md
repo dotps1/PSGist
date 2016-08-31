@@ -40,7 +40,7 @@ Get a Commit from a Gist Object using the currently authenticated user context.
     
     Required?                    true
     Position?                    Named
-    Accept pipeline input?       true (ByPropertyName)
+    Accept pipeline input?       true (ByValue, ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
     Dynamic?                     false

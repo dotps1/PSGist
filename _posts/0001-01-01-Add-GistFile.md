@@ -72,9 +72,9 @@ Add one or more files to an existing Gist Object using the currently authenticat
     
     Required?                    true
     Position?                    Named
-    Accept pipeline input?       true (ByValue)
+    Accept pipeline input?       true (ByPropertyName)
     Parameter set name           Path
-    Aliases                      None
+    Aliases                      FullName
     Dynamic?                     false
     
 <CommonParameters>

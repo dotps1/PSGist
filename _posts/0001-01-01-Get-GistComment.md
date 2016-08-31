@@ -40,7 +40,7 @@ Get a Comment from a Gist Object using the currently authenticated user context.
     
     Required?                    false
     Position?                    Named
-    Accept pipeline input?       true (ByPropertyName)
+    Accept pipeline input?       true (ByValue, ByPropertyName)
     Parameter set name           SingleComment
     Aliases                      None
     Dynamic?                     false

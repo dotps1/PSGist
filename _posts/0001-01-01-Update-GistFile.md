@@ -81,9 +81,9 @@ Updates the contents of a GistFile from a Gist using the currently authenticated
     
     Required?                    true
     Position?                    Named
-    Accept pipeline input?       true (ByValue)
+    Accept pipeline input?       true (ByPropertyName)
     Parameter set name           Path
-    Aliases                      None
+    Aliases                      FullName
     Dynamic?                     false
     
 -WhatIf

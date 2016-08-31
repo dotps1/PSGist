@@ -48,7 +48,7 @@ Removes a File from a Gist Object using the currently authenticated user context
     
     Required?                    true
     Position?                    Named
-    Accept pipeline input?       false
+    Accept pipeline input?       true (ByPropertyName)
     Parameter set name           (All)
     Aliases                      None
     Dynamic?                     false
