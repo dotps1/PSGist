@@ -19,7 +19,8 @@ function Remove-GistFile {
 
         [Parameter(
             HelpMessage = "The name of the GistFile.",
-            Mandatory = $true    
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true
         )]
         [String[]]
         $FileName

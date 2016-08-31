@@ -21,7 +21,7 @@ Function Update-GistFile {
             HelpMessage = "Path to file(s) where the content will be used for the GistFile.",
             Mandatory = $true,
             ParameterSetName = "Path",
-            ValueFromPipeline = $true
+            ValueFromPipelineByPropertyName = $true
         )]
         [ValidateScript({ 
             if (Test-Path -Path $_) { 
@@ -37,7 +37,10 @@ Function Update-GistFile {
                 throw "Path must be to a file." 
             }
         })]
-        [String]
+        [Alias(
+            'FullName'
+        )]
+        [String[]]
         $Path
     )
 

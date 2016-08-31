@@ -10,6 +10,7 @@ Function Get-GistFork {
         [Parameter(
             HelpMessage = "The Id of the Gist Object.",
             Mandatory = $true, 
+            ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
         [String[]]

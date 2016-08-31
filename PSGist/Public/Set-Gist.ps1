@@ -12,7 +12,8 @@ Function Set-Gist {
     Param (
         [Parameter(
             HelpMessage = "The Id of the Gist Object.",
-            Mandatory = $true, 
+            Mandatory = $true,
+            ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
         [String[]]
