@@ -1,5 +1,8 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
+branches:
+  only:
+    - master
 os: WMF 5
 skip_commits:
   message: /updated readme.*/
