@@ -45,7 +45,7 @@ Function Update-GistFile {
     )
 
     DynamicParam {
-        # Only present this parameter set if running the PowerShell ISE.
+        # Only present these parameters set if running the PowerShell ISE.
         if ($null -ne $psISE) {
             # Build Attributes for the IseScriptPane Parameter.
             $iseScriptPaneAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
@@ -54,9 +54,15 @@ Function Update-GistFile {
             }
             # Build Collection Object to hold Parameter Attributes.
             $iseScriptPaneCollection = New-Object -TypeName System.Collections.ObjectModel.Collection[System.Attribute]
-            $iseScriptPaneCollection.Add($iseScriptPaneAttributes)
+            $iseScriptPaneCollection.Add(
+                $iseScriptPaneAttributes
+            )
             # Build Runtime Parameter with Collection Parameter Attributes.
-            $iseScriptPaneParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter  -ArgumentList ("IseScriptPane", [Switch], $iseScriptPaneCollection)
+            $iseScriptPaneParameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                "IseScriptPane", 
+                [Switch], 
+                $iseScriptPaneCollection
+            )
 
             # Build Attributes for GistFileName Parameter.
             $gistFileNameAttributes = New-Object -TypeName System.Management.Automation.ParameterAttribute -Property @{
@@ -65,14 +71,26 @@ Function Update-GistFile {
             }
             # Build Collection Object to hold Parameter Attributes. 
             $gistFileNameCollection = New-Object -TypeName System.Collections.ObjectModel.Collection[System.Attribute]
-            $gistFileNameCollection.Add($gistFileNameAttributes)
+            $gistFileNameCollection.Add(
+                $gistFileNameAttributes
+            )
             # Build Runtime Parameter with Collection Parameter Attributes.
-            $gistFileNameParameter = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameter -ArgumentList ("FileName", [String], $gistFileNameCollection)
+            $gistFileNameParameter = [System.Management.Automation.RuntimeDefinedParameter]::new(
+                "FileName", 
+                [String], 
+                $gistFileNameCollection
+            )
             
             # Build Runtime Dictionary and add Runtime Parameters to it.
-            $dictionary = New-Object -TypeName System.Management.Automation.RuntimeDefinedParameterDictionary
-            $dictionary.Add("IseScriptPane", $iseScriptPaneParameter)
-            $dictionary.Add("FileName", $gistFileNameParameter)
+            $dictionary = [System.Management.Automation.RuntimeDefinedParameterDictionary]::new()
+            $dictionary.Add(
+                "IseScriptPane", 
+                $iseScriptPaneParameter
+            )
+            $dictionary.Add(
+                "FileName", 
+                $gistFileNameParameter
+            )
             # Return dictionary of Runtime Paramters to the PSCmdlet.
             return $dictionary
         }
