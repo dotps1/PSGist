@@ -25,10 +25,7 @@ Function Save-Gist {
 
     Process {
         foreach ($item in $Id) {
-            $directory = New-Item -Path $Path -Name $item -ItemType Directory -Force
-            foreach ($file in (Get-Gist -Id $item).Files) {
-                New-Item -Path $directory -Name $file.FileName -ItemType File -Value $($file.Content)
-            }
+            (Get-Gist -Id $item).Save($Path)
         }
     }
 }

@@ -13,7 +13,7 @@ Function Get-Gist {
             ParameterSetName = "Owner",
             ValueFromPipelineByPropertyName = $true
         )]
-        [String]
+        [String[]]
         $Owner,
         
         [Parameter(

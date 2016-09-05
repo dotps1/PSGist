@@ -48,7 +48,13 @@ Class Gist {
         $this.Public = $Public
     }
 
-    # TODO: Create() and Delete() methods.
+    # Methods.
+    Save([String]$Path) {
+        $directory = New-Item -Path $Path -Name $this.Id -ItemType Directory -Force -ErrorAction Stop
+        foreach ($file in $this.Files) {
+            New-Item -Path $directory -Name $file.FileName -ItemType File -Value $file.Content -ErrorAction Stop
+        }
+    }
 }
 
 Class GistChangeStatus {

@@ -23,7 +23,7 @@
 
     $uri = "https://gist.github.com/search?q=user%3A{0}" -f $Owner
 
-    foreach ($word in ($FileNameKeyword -split " ")) {
+    foreach ($word in (-split $FileNameKeyword)) {
         $uri += "+{0}" -f $word
     }
 
