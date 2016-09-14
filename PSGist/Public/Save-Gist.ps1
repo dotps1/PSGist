@@ -25,7 +25,9 @@ Function Save-Gist {
 
     Process {
         foreach ($item in $Id) {
-            (Get-Gist -Id $item).Save($Path)
+            (Get-Gist -Id $item).Save(
+                $Path
+            )
         }
     }
 }

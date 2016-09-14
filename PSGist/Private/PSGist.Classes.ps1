@@ -49,11 +49,13 @@ Class Gist {
     }
 
     # Methods.
-    Save([String]$Path) {
+    [Array]Save([String]$Path) {
         $directory = New-Item -Path $Path -Name $this.Id -ItemType Directory -Force -ErrorAction Stop
-        foreach ($file in $this.Files) {
-            New-Item -Path $directory -Name $file.FileName -ItemType File -Value $file.Content -ErrorAction Stop
-        }
+        $this.Files.ForEach({
+            Set-Content -Path "${directory}\$($_.FileName)" -Value $_.Content -ErrorAction Stop
+        })
+
+        return Get-ChildItem -Path $directory
     }
 }
 
